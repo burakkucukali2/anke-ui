@@ -1,0 +1,124 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.contact-info-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    color: #B58E38;
+}
+
+.contact-value {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin-top:5px
+}
+
+.contact-icon {
+    color: #B58E38;
+}
+
+.vertical-divider {
+    border-left: 1px solid #C4C4C4;
+    height: 70%;
+    margin: 0 30px;
+}
+
+.nav {
+    height: 60px;
+    background-color: #B58E38;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-list {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.nav-item a {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0.07em;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-item a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.lang-selection {
+    display: flex;
+    gap: 10px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.lang-selection> * {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.lang-selection-active {
+    color: #000;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .nav-item a {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 1052px) {
+    .nav-list {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-info-wrapper {
+        margin-top: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+    .lang-selection {
+        display: none;
+    }
+    .contact-info > * {
+        margin-top: 10px;
+    }
+    .contact-title {
+        font-size: 13px;
+    }
+    .contact-value {
+        font-size: 12px;
+    }
+    .vertical-divider {
+        margin: 0 11px;
+        height: 90%;
+    }
+}

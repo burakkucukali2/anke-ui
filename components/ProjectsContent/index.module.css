@@ -1,55 +1,75 @@
 .wrapper {
     padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .wrapper:hover::before {
     opacity: 0.2;
 }
 
-.row {
+.selectbox {
+    padding: 7px;
+    border: 2px solid #C4C4C4;
+    border-radius: 5px;
+    color: #5e5752;
+}
+
+.selectbox-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    margin: -15px;
+    justify-content: space-between;
+    padding: 20px 20px 15px 0;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 20px 0 ;
 }
 
 .col {
-    flex-basis: calc(100%);
-    max-width: calc(100%);
-    padding: 15px 15px 30px 15px;
-    cursor: pointer;
-    transition: transform 0.5s;
+    margin-bottom: 20px;
+    transition: transform 0.5s
 }
 
 .col:hover {
     transform: scale(1.1);
 }
 
+.tags-wrapper {
+    display: flex;
+    gap: 7px;
+}
 
-@media (min-width: 576px) {
-    .col {
-        flex-basis: calc(100%);
-        max-width: calc(100%);
+@media (max-width: 750px) {
+    .row {
+        grid-template-columns: 1fr;
     }
 }
 
-@media (min-width: 992px) {
-    .col {
-        flex-basis: calc(50% - 30px);
-        max-width: calc(50% - 30px);
+@media (min-width: 750px) {
+    .row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 994px) {
+    .row {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media (min-width: 1200px) {
-    .col {
-        flex-basis: calc(33.3% - 30px);
-        max-width: calc(33.3% - 30px);
+    .row {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media (min-width: 1450px) {
-    .col {
-        flex-basis: calc(25% - 30px);
-        max-width: calc(25% - 30px);
+    .row {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
@@ -69,6 +89,7 @@
     margin-top: 10px;
     font-size: 0.82rem;
     color: #31312d;
+    text-align: center;
 }
 
 .service-type-tag {
@@ -79,9 +100,15 @@
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
+    margin-top: 7px;
 }
 
 .hover-animation {
     position: relative;
     overflow: hidden;
+}
+
+.anchor-class {
+    text-decoration: none;
+    color: #000000;
 }

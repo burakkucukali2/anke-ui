@@ -1,5 +1,6 @@
 {
   "name": "my anke",
+  "general_title": "Anke Construction and Building",
   "home_title": "Anke Construction and Building - Quality and Reliable Construction Services",
   "home_description": "Our leading construction company prioritizes customer satisfaction, delivering your projects with the highest quality service. Visit us for more information.",
   "description": "Anke description",
@@ -46,5 +47,15 @@
   "flat_for_description":  "We construct buildings in exchange for floors on empty land, and we also demolish buildings that are owned and used by property owners to construct new buildings in exchange for floors.\n\nEnsuring the highest quality while delivering in the shortest possible time is one of the most significant advantages we offer to property owners.",
   "contracting_description": "For contract works, we undertake all official and bureaucratic procedures in addition to construction activities, starting from the design and project stage for works that have not yet been designed.\nFurthermore, our company also takes on the construction of works that are presented to us by the employer, which have already been designed and commissioned to our company.",
   "engineering_description": "Structural Design Project is a project prepared by construction engineers in accordance with the architectural project, scaled according to the size and characteristics of the building, indicating the load-bearing systems according to the types of structures such as reinforced concrete, masonry, steel, and others, including all floor plans including the basement, roof plans, their sections, details, and calculations.\n\nMechanical Project refers to the design process that covers the cooling or heating, ventilation, wastewater disposal, hot water installation, and fire extinguishing operations that fall within the field of mechanical engineering in construction projects.\n\nArchitectural Project is a project that includes all details such as the exterior appearance, interior design, proportions of masses, and plans of the building to be constructed.",
-  "urban_transformation_description":  "Identification of Risky Buildings: Buildings that have completed their economic life or pose a risk of collapse or severe damage based on scientific and technical data within or outside of a risky area under the Law No. 6306 are referred to as \"risky buildings.\"\n\nSoil Investigation Report: A report prepared by construction engineers in accordance with the principles, examining the soil mechanics and soil safety stresses for each parcel, examining the soil type and group based on geological and geophysical reports related to the region provided with the zoning status document."
+  "urban_transformation_description":  "Identification of Risky Buildings: Buildings that have completed their economic life or pose a risk of collapse or severe damage based on scientific and technical data within or outside of a risky area under the Law No. 6306 are referred to as \"risky buildings.\"\n\nSoil Investigation Report: A report prepared by construction engineers in accordance with the principles, examining the soil mechanics and soil safety stresses for each parcel, examining the soil type and group based on geological and geophysical reports related to the region provided with the zoning status document.",
+  "projectOwner": "Project Owner",
+  "projectFeature": "Project Features",
+  "structureFeature": "Structure Feature",
+  "moldArea": "Mold Area",
+  "location": "Location",
+  "totalArea": "Total Area",
+  "ironAmount": "Iron Amount",
+  "concreteAmount": "Concrete Amount",
+  "startDate": "Start Date",
+  "endDate": "End Date"
 }

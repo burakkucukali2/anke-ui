@@ -19,9 +19,9 @@ export default function ProjectDetail() {
 
 export async function getServerSideProps(ctx) {
   /*  const projectDetail = await fetch(
-          `http://localhost:1337/api/projects/${ctx.params.projectId} `
-        );
-        const projectDetailData = await projectDetail.json();*/
+        `http://localhost:1337/api/projects/${ctx.params.projectId} `
+      );
+      const projectDetailData = await projectDetail.json();*/
 
   return {
     props: {

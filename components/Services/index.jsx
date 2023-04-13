@@ -61,8 +61,8 @@ export default function Services() {
         }}
         className={styles["service-swiper"]}
       >
-        {services.map((item, index) => (
-          <SwiperSlide key={index}>
+        {services.map((item) => (
+          <SwiperSlide key={item.title}>
             <div className={styles["slide-content"]}>
               <div className="slide-left">
                 <div className={styles["slide-content-title"]}>

@@ -1,5 +1,6 @@
 {
   "name": "Ankem",
+  "general_title": "Anke Yapı ve İnşaat",
   "home_title": "Anke Yapı ve İnşaat - Kaliteli ve Güvenilir İnşaat Hizmetleri",
   "home_description": "Yapı ve inşaat sektöründe lider firmamız, müşteri memnuniyeti odaklı hizmetleriyle projelerinizi en iyi şekilde hayata geçiriyor. Detaylı bilgi için ziyaret edin.",
   "description": "Anke açıklama",
@@ -46,5 +47,15 @@
   "flat_for_description": "Boş arsalar üzerinde kat karşılığı inşaatlar yaptığımız gibi üzerinde bina olan, mülk sahiplerinin kullanımında olan binaları da yıkarak kat karşılığı olarak yapmaktayız\n\nKaliteden33 ödün vermemek kaydıyla en kısa sürede teslimi gerçekleştirmek mülk sahiplerine sunduğumuz en önemli avantajlar arasındadır.",
   "contracting_description": "Taahhüt işlerinde projesi henüz yapılmamış işler için, tasarım ve proje aşamasından başlayarak, bütün resmi ve bürokratik işlemleri de inşaa faaliyetlerin beraberinde yürütmekteyiz.\nAyrıca şirketimiz, projesi işveren tarafından yaptırılarak şirketimize sunulan işlerin inşaasını da üstlenmektedir.",
   "engineering_description": "Statik Proje Mimari projeye uygun olarak, inşaat mühendisleri tarafından hazırlanan, ölçekleri yapının büyüklüğüne ve özelliğine göre belirlenen, betonarme, yığma, çelik ve benzeri yapıların türlerine göre taşıyıcı sistemlerini gösteren, bodrum kat dahil tüm kat planları, çatı planları, bunların kesitleri, detayları ve hesaplarıdır.\nMekanik Proje Mekanik projeler yapı işlerinde makine mühendisliği alanına giren soğutma ya da ısıtma, binanı havalandırması, pis su tahliyesi, sıcak su tesisatı ve yangın söndürme gibi iş ve işlemleri kapsayan projelendirme işlemlerine verilen addır.\nMimari Proje Mimari proje, inşa edilecek yapının dış görüntüsü, iç dizaynı, kitlelerin birbiriyle oranı, planları gibi tüm ayrıntıların yer aldığı projedir.",
-  "urban_transformation_description": "Riskli Yapı Tespiti 6306 sayılı Kanun uyarınca riskli alan içinde veya dışında olup ekonomik ömrünü tamamlamış olan ya da yıkılma veya ağır hasar görme riski taşıdığı ilmi ve teknik verilere dayanılarak tespit edilen yapılar “riskli yapı” olarak nitelendirilir.\nZemin Etüd Raporu Her parsel için zemin mekaniği ve zemin emniyet gerilmelerini inceleyen, imar durum belgesi ile verilen bölge geneli ile ilgili jeolojik ve jeofizik raporları doğrultusunda, zemin cinsi ve grubunu inceleyen, inşaat mühendislerince esaslara uygun hazırlanan rapordur."
+  "urban_transformation_description": "Riskli Yapı Tespiti 6306 sayılı Kanun uyarınca riskli alan içinde veya dışında olup ekonomik ömrünü tamamlamış olan ya da yıkılma veya ağır hasar görme riski taşıdığı ilmi ve teknik verilere dayanılarak tespit edilen yapılar “riskli yapı” olarak nitelendirilir.\nZemin Etüd Raporu Her parsel için zemin mekaniği ve zemin emniyet gerilmelerini inceleyen, imar durum belgesi ile verilen bölge geneli ile ilgili jeolojik ve jeofizik raporları doğrultusunda, zemin cinsi ve grubunu inceleyen, inşaat mühendislerince esaslara uygun hazırlanan rapordur.",
+  "projectOwner": "Proje Sahibi",
+  "projectFeature": "Proje Özellikleri",
+  "structureFeature": "Yapı Özellikleri",
+  "moldArea": "Kalıp Alanı",
+  "location": "Konum",
+  "totalArea": "Toplam Alan",
+  "ironAmount": "Demir Miktarı",
+  "concreteAmount": "Beton Miktarı",
+  "startDate": "Başlangıç Tarihi",
+  "endDate": "Bitiş Tarihi"
 }

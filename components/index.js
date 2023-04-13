@@ -5,6 +5,7 @@ import BannerSection from "./BannerSection";
 import Services from "./Services";
 import AboutContent from "./AboutContent";
 import ProjectsContent from "./ProjectsContent";
+import Spinner from "./Spinner";
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   Services,
   AboutContent,
   ProjectsContent,
+  Spinner,
 };

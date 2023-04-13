@@ -61,10 +61,12 @@
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
+    outline: none;
+    box-shadow: none;
 }
 
 .nav-item a:hover {
-    color: #000;
+    color: #130d08;
     text-decoration: none;
 }
 

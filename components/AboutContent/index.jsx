@@ -9,20 +9,12 @@ export default function AboutContent() {
   return (
     <div className={styles["wrapper"]}>
       <div className={styles["about_text_section"]}>
-        <div className={styles["about-slogan"]}>{`"${t(
+        <div className={`slide-down ${styles["about-slogan"]}`}>{`"${t(
           "common:about_slogan"
         )}"`}</div>
         <div className={styles["about-description"]}>
           {t("common:about_description")}
         </div>
-      </div>
-      <div>
-        <Image
-          src="/about-img.png"
-          alt="About image"
-          width={500}
-          height={700}
-        />
       </div>
     </div>
   );

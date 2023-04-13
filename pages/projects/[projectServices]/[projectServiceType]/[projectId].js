@@ -66,7 +66,9 @@ export default function ProjectDetail(props) {
   return (
     <>
       <DynamicHead
-        title={props.projectData.data.attributes[locale].name}
+        title={`${props.projectData.data.attributes[locale].name} | ${t(
+          "common:general_title"
+        )}`}
         description={props.projectData.data.attributes[locale].name}
       />
       <div className={styles["wrapper"]}>

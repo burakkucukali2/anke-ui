@@ -74,7 +74,26 @@
 @media (max-width: 560px) {
   .wrapper {
     flex-direction: column;
-    padding: 0;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .box-group {
+    gap: 5px;
+    padding: 0 !important;
+  }
+
+  .info-item-key {
+    font-size: 14px;
+    margin-right: 5px;
+    line-height: 19px;
+  }
+
+  .info-section {
+    margin-top: 20px;
+    padding: 0 20px;
   }
 
   .image {

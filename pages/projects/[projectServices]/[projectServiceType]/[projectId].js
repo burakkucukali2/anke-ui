@@ -64,7 +64,7 @@ export default function ProjectDetail(props) {
   ];
 
   return (
-    <div className="layout">
+    <>
       <DynamicHead
         title={props.projectData.data.attributes[locale].name}
         description={props.projectData.data.attributes[locale].name}
@@ -78,7 +78,7 @@ export default function ProjectDetail(props) {
           loading="lazy"
           className={styles["image"]}
         />
-        <div>
+        <div className={styles["info-section"]}>
           <div className={styles["title"]}>
             {props.projectData.data.attributes[locale].name}
           </div>
@@ -121,7 +121,7 @@ export default function ProjectDetail(props) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

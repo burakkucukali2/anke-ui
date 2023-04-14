@@ -11,7 +11,7 @@ export default function BannerSection() {
         <Image
           src="/large-banner.webp"
           alt="anke-banner"
-          className={"image"}
+          className={styles["banner-image"]}
           width={1920}
           height={500}
         />

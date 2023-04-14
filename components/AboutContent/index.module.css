@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 4%;
+    padding: 4% 0;
 }
 
 .about_text_section {
@@ -28,4 +28,19 @@
     color: #363422;
     letter-spacing: 1px;
     line-height: 1.32rem;
+}
+
+@media (max-width: 768px) {
+    .about_text_section {
+        width: 80%;
+    }
+    .about-slogan {
+        width: 100%;
+        font-size: 1.5rem;
+        margin-bottom:10px
+    }
+
+    .about-description {
+        font-size: 0.8rem;
+    }
 }

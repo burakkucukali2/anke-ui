@@ -12,9 +12,7 @@ export default function About() {
         title={t("common:about_title")}
         description={t("home_description")}
       />
-      <div className="layout">
-        <AboutContent />
-      </div>
+      <AboutContent />
     </>
   );
 }

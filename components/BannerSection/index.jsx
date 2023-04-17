@@ -2,7 +2,7 @@ import styles from "./index.module.css";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 
-export default function BannerSection() {
+export default function BannerSection({ scrollTo }) {
   const { t } = useTranslation("common");
 
   return (
@@ -19,7 +19,10 @@ export default function BannerSection() {
           <h1 className={`${styles["banner-text"]} slide-down`}>
             {t("banner-text")}
           </h1>
-          <button className={styles["banner-contact-button"]}>
+          <button
+            onClick={scrollTo}
+            className={styles["banner-contact-button"]}
+          >
             {t("common:contact_us")}
           </button>
         </div>

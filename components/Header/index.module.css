@@ -65,6 +65,10 @@
     box-shadow: none;
 }
 
+.nav-item--active {
+    border-bottom: 2px solid #fff;
+}
+
 .nav-item a:hover {
     color: #130d08;
     text-decoration: none;

@@ -57,5 +57,7 @@
   "ironAmount": "Iron Amount",
   "concreteAmount": "Concrete Amount",
   "startDate": "Start Date",
-  "endDate": "End Date"
+  "endDate": "End Date",
+  "load_more": "Load More",
+  "turnkey_short_title": "Turnkey"
 }

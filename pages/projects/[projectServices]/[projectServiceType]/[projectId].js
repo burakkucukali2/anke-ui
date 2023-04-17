@@ -63,8 +63,32 @@ export default function ProjectDetail(props) {
     },
   ];
 
+  const renderBoxes = () => {
+    return (
+      <div className={styles["box-group"]}>
+        {projectBoxValueAndKey.map((item) => (
+          <div key={item.key}>
+            {item.value && (
+              <div key={item.key} className={styles["box"]}>
+                <div className={styles["box-value"]}>
+                  <div className={styles["box-value-text"]}>{item.value}</div>
+                  <div className={styles["box-value-unit"]}>{item.unit}</div>
+                </div>
+                <div className={styles["box-title"]}>
+                  {t(`common:${item.key}`)}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  console.log("props.projectData.data.attributes", props.projectData);
+
   return (
-    <>
+    <div className="layout">
       <DynamicHead
         title={`${props.projectData.data.attributes[locale].name} | ${t(
           "common:general_title"
@@ -73,11 +97,10 @@ export default function ProjectDetail(props) {
       />
       <div className={styles["wrapper"]}>
         <Image
-          src={"/turnkey-img.png"}
+          src={props.projectData.data.attributes.imgUrl ?? "/turnkey-img.png"}
           alt={props.projectData.data.attributes[locale].name}
-          width={550}
-          height={550}
-          loading="lazy"
+          width={710}
+          height={400}
           className={styles["image"]}
         />
         <div className={styles["info-section"]}>
@@ -86,7 +109,7 @@ export default function ProjectDetail(props) {
           </div>
           <div className={styles["info"]}>
             {projectInfoValueAndKey.map((item) => (
-              <div key={item}>
+              <div key={item.key}>
                 {item.value && (
                   <div key={item.key} className={styles["info-item"]}>
                     <span className={styles["info-item-key"]}>
@@ -100,30 +123,10 @@ export default function ProjectDetail(props) {
               </div>
             ))}
           </div>
-          <div className={styles["box-group"]}>
-            {projectBoxValueAndKey.map((item) => (
-              <div key={item.key}>
-                {item.value && (
-                  <div key={item.key} className={styles["box"]}>
-                    <div className={styles["box-value"]}>
-                      <div className={styles["box-value-text"]}>
-                        {item.value}
-                      </div>
-                      <div className={styles["box-value-unit"]}>
-                        {item.unit}
-                      </div>
-                    </div>
-                    <div className={styles["box-title"]}>
-                      {t(`common:${item.key}`)}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          {renderBoxes()}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

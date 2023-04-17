@@ -13,7 +13,7 @@ export default function Services() {
 
   const services = [
     {
-      title: t("common:turnkey"),
+      title: t("common:turnkey_short_title"),
       suffix: t("common:projects_title_as_service"),
       description: t("common:turnkey_description"),
       image: "/turnkey-img.png",
@@ -22,25 +22,25 @@ export default function Services() {
       title: t("common:flat_for"),
       suffix: t("common:construction"),
       description: t("common:flat_for_description"),
-      image: "/turnkey-img.png",
+      image: "/exchange-for-flat.webp",
     },
     {
       title: t("common:contracting"),
       suffix: t("common:services"),
       description: t("common:contracting_description"),
-      image: "/turnkey-img.png",
+      image: "/contracting-img.webp",
     },
     {
       title: t("common:engineering"),
       suffix: t("common:services"),
       description: t("common:engineering_description"),
-      image: "/turnkey-img.png",
+      image: "/engineering-service.webp",
     },
     {
       title: t("common:urban_transformation"),
       suffix: t("common:services"),
       description: t("common:urban_transformation_description"),
-      image: "/turnkey-img.png",
+      image: "/urban-transformation-img.webp",
     },
   ];
 
@@ -83,7 +83,7 @@ export default function Services() {
               <div className={`${styles["service-image"]} slide-right`}>
                 <Image
                   src={item.image}
-                  alt="Turnkey Project"
+                  alt={item.title}
                   width={400}
                   height={400}
                 />

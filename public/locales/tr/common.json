@@ -57,5 +57,7 @@
   "ironAmount": "Demir Miktarı",
   "concreteAmount": "Beton Miktarı",
   "startDate": "Başlangıç Tarihi",
-  "endDate": "Bitiş Tarihi"
+  "endDate": "Bitiş Tarihi",
+  "load_more": "Daha fazla yükle",
+  "turnkey_short_title": "Anahtar Teslim"
 }

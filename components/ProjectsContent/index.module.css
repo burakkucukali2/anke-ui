@@ -12,7 +12,9 @@
     padding: 7px;
     border: 2px solid #C4C4C4;
     border-radius: 5px;
-    color: #5e5752;
+    width: 450px;
+    background-color: #a99b7e;
+    color: #FFFFFF;
 }
 
 .selectbox-wrapper {
@@ -26,6 +28,18 @@
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     padding: 20px 0 ;
+}
+
+.load-more-button {
+    background-color: #5d4c27;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.5s;
 }
 
 .col {
@@ -110,4 +124,12 @@
 .anchor-class {
     text-decoration: none;
     color: #000000;
+}
+
+.content-section {
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
 }

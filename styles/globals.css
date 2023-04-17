@@ -16,6 +16,11 @@ body {
   grid-column: 2;
 }
 
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
 
 .slide-down {
   animation: slide-down 0.5s ease-in-out;

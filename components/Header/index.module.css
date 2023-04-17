@@ -50,10 +50,11 @@
 .nav-list {
     display: flex;
     width: 50%;
+    transition: 0.3s;
     justify-content: space-between;
 }
 
-.nav-item a {
+.nav-item a, .nav-item--active a {
     font-size: 18px;
     font-weight: 600;
     line-height: 21px;
@@ -61,8 +62,8 @@
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
+    transition: 0.1s;
     outline: none;
-    box-shadow: none;
 }
 
 .nav-item--active {

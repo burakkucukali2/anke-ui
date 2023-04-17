@@ -3,9 +3,12 @@ import HeaderTop from "@/components/Header/HeaderTop";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 function Header() {
   const { t } = useTranslation("common");
+  const router = useRouter();
+
   const navItems = [
     {
       title: t("common:home"),
@@ -19,10 +22,6 @@ function Header() {
       title: t("common:projects"),
       link: "/projects",
     },
-    {
-      title: t("common:machine_palette"),
-      link: "/machine-palette",
-    },
   ];
 
   const renderNavItems = () => {
@@ -30,7 +29,14 @@ function Header() {
       <nav className={`${styles["nav"]}`}>
         <ul className={styles["nav-list"]}>
           {navItems.map((item, index) => (
-            <li key={index} className={styles["nav-item"]}>
+            <li
+              key={index}
+              className={
+                styles[
+                  `nav-item${router.pathname === item.link ? "--active" : ""}`
+                ]
+              }
+            >
               <Link href={item.link} className={styles["nav-link"]}>
                 {item.title}
               </Link>

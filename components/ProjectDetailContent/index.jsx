@@ -105,7 +105,10 @@ function ProjectDetailContent({ projectData, isLoading }) {
   return (
     <>
       {isLoading ? (
-        <Spinner isLoading={isLoading} />
+        <div className={styles["spinner-wrapper"]}>
+          {" "}
+          <Spinner isLoading={isLoading} />
+        </div>
       ) : (
         <div className={styles["wrapper"]}>
           <Image

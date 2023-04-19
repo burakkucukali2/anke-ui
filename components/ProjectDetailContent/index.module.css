@@ -4,6 +4,14 @@
     gap: 10%;
 }
 
+.spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
 .title {
     font-family: "Josefin Sans", sans-serif;
     font-size:40px;

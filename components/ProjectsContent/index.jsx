@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { generateLowercaseAndKebabCasePath } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
-import { Spinner } from "@/components";
+import { Spinner, NoData } from "@/components";
 
 const SERVICES_IDS = {
   all: 0,
@@ -82,6 +82,7 @@ export default function ProjectsContent() {
   const handleServiceSelect = (e) => {
     const service = e.target.value;
     setSelectedService(service);
+    setIsLoading(true);
   };
 
   const resetParams = () => {
@@ -188,12 +189,12 @@ export default function ProjectsContent() {
 
   return (
     <div className={styles["wrapper"]}>
+      {renderSelectBox()}
       {isLoading ? (
         <Spinner isLoading={isLoading} />
       ) : (
         <div className={styles["content-section"]}>
-          {renderSelectBox()}
-          {renderProjects()}
+          {projects.length > 0 ? renderProjects() : <NoData />}
           {renderLoadMoreButton()}
         </div>
       )}

@@ -57,5 +57,6 @@
   "startDate": "Başlangıç Tarihi",
   "endDate": "Bitiş Tarihi",
   "load_more": "Daha fazla yükle",
-  "turnkey_short_title": "Anahtar Teslim"
+  "turnkey_short_title": "Anahtar Teslim",
+  "no_projects_such_as": "Bu kategoride proje bulunmamaktadır..."
 }

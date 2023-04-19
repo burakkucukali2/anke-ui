@@ -4,7 +4,7 @@ import DynamicHead from "@/components/DynamicHead";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import ProjectDetailContent from "@/components/ProjectDetailContent";
+import { ProjectDetailContent } from "@/components";
 
 export default function ProjectDetail() {
   const { t } = useTranslation("common");

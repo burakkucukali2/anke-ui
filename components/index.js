@@ -6,6 +6,8 @@ import Services from "./Services";
 import AboutContent from "./AboutContent";
 import ProjectsContent from "./ProjectsContent";
 import Spinner from "./Spinner";
+import ProjectDetailContent from "./ProjectDetailContent";
+import NoData from "./NoData";
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   AboutContent,
   ProjectsContent,
   Spinner,
+  ProjectDetailContent,
+  NoData,
 };

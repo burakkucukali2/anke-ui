@@ -32,16 +32,20 @@
 }
 
 .slide-content-button {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
-  color: #B58E38;
-  cursor: pointer;
   margin-top:25px;
 }
 
-.slide-content-button:hover {
-  color: #383008;
+.slide-content-link {
+  text-decoration: none;
+  color: #B58E38;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.slide-content-link:hover {
+  color: #5e5752;
 }
 
 .navigation {

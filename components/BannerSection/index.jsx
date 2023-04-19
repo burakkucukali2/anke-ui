@@ -9,7 +9,7 @@ export default function BannerSection({ scrollTo }) {
     <div className={styles["banner-section"]}>
       <div className={styles["banner-image-container"]}>
         <Image
-          src="/large-banner.webp"
+          src="https://res.cloudinary.com/drjnu4wfu/image/upload/v1681754719/large-building-site-1_f8iuiq.webp"
           alt="anke-banner"
           className={styles["banner-image"]}
           width={1920}

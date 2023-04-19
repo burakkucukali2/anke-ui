@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/swiper-bundle.min.css";
 import styles from "./index.module.css";
+import Link from "next/link";
 
 export default function Services() {
   const { t } = useTranslation("common");
@@ -76,8 +77,13 @@ export default function Services() {
                   {item.description}
                 </div>
                 <div className={styles["slide-content-button"]}>
-                  {t("common:view_projects")}
-                  {" ->"}
+                  <Link
+                    href={"/projects"}
+                    className={styles["slide-content-link"]}
+                  >
+                    {t("common:view_projects")}
+                    {" ->"}
+                  </Link>
                 </div>
               </div>
               <div className={`${styles["service-image"]} slide-right`}>

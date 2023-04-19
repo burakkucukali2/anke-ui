@@ -2,8 +2,8 @@
     z-index: 9999;
     top: 0;
     left: 0;
-    width: 500px;
-    height: 500px;
+    width: 350px;
+    height: 350px;
     backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;

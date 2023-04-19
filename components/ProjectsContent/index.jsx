@@ -51,7 +51,7 @@ export default function ProjectsContent() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const fetchAllProjectsWithPage = async (page) => {
-    const url = `https://anke-api.onrender.com/api/projects?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`;
+    const url = `http://localhost:1337/api/projects?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -72,7 +72,7 @@ export default function ProjectsContent() {
   };
 
   const fetchProjectsByService = async (service) => {
-    const url = `https://anke-api.onrender.com/api/categories/${SERVICES_IDS[service]}?populate=projects`;
+    const url = `http://localhost:1337/api/categories/${SERVICES_IDS[service]}?populate=projects`;
     const response = await fetch(url);
     const json = await response.json();
     setProjects(json?.data?.attributes.projects.data);

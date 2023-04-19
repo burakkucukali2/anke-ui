@@ -17,12 +17,38 @@ export default function HeaderTop() {
     router.push({ pathname, query }, asPath, { locale: lng });
   };
 
+  const renderLangSelection = () => {
+    return (
+      <div className={styles["lang-selection"]}>
+        <span
+          className={`${
+            i18n.language === "tr" ? styles["lang-selection-active"] : ""
+          }`}
+          onClick={changeLanguage("tr")}
+        >
+          TR
+        </span>
+        <span
+          className={`${
+            i18n.language === "en" ? styles["lang-selection-active"] : ""
+          }`}
+          onClick={changeLanguage("en")}
+        >
+          EN
+        </span>
+      </div>
+    );
+  };
+
   return (
     <div className="layout">
       <div className={`${styles["header"]}`}>
         <Link href={"/"}>
           <Image src="/anke-logo.png" alt="Logo" width={200} height={100} />
         </Link>
+        <div className={styles["mobile-lang-selection"]}>
+          {renderLangSelection()}
+        </div>
         <div className={styles["contact-info-wrapper"]}>
           <div className={styles["contact-info"]}>
             <AiOutlineMail size={24} className={styles["contact-icon"]} />
@@ -43,23 +69,8 @@ export default function HeaderTop() {
               <div className={styles["contact-value"]}>{MY_PHONE_NUMBER}</div>
             </div>
           </div>
-          <div className={styles["lang-selection"]}>
-            <span
-              className={`${
-                i18n.language === "tr" ? styles["lang-selection-active"] : ""
-              }`}
-              onClick={changeLanguage("tr")}
-            >
-              TR
-            </span>
-            <span
-              className={`${
-                i18n.language === "en" ? styles["lang-selection-active"] : ""
-              }`}
-              onClick={changeLanguage("en")}
-            >
-              EN
-            </span>
+          <div className={styles["desktop-lang-selection"]}>
+            {renderLangSelection()}
           </div>
         </div>
       </div>

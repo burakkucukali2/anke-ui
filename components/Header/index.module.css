@@ -76,6 +76,10 @@
     text-decoration: none;
 }
 
+.mobile-lang-selection {
+    display: none;
+}
+
 .lang-selection {
     display: flex;
     gap: 10px;
@@ -104,30 +108,45 @@
         width: 100%;
         padding: 0 10px;
     }
+
     .nav-item--active a {
         font-size: 15px !important;
     }
+
     .header {
         flex-direction: column;
         align-items: center;
     }
+
     .contact-info-wrapper {
-        margin-top: 20px;
         align-items: center;
         justify-content: center;
     }
+
     .lang-selection {
+        margin: 10px 0;
+    }
+
+    .mobile-lang-selection {
+        display: block;
+    }
+
+    .desktop-lang-selection {
         display: none;
     }
+
     .contact-info > * {
         margin-top: 10px;
     }
+
     .contact-title {
         font-size: 13px;
     }
+
     .contact-value {
         font-size: 12px;
     }
+
     .vertical-divider {
         margin: 0 11px;
         height: 90%;

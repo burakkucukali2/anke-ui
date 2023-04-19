@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { splitDateAccordingToMinusSignAndReverse } from "@/utils/helper";
 import { useEffect, useState } from "react";
+import { Spinner } from "@/components";
 
 export default function ProjectDetail() {
   const { t } = useTranslation("common");
@@ -13,11 +14,13 @@ export default function ProjectDetail() {
   const { projectId } = query;
 
   const [projectData, setProjectData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchProjectDetail = async () => {
     const res = await fetch(`http://localhost:1337/api/projects/${projectId}`);
     const data = await res.json();
     setProjectData(data);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -102,42 +105,46 @@ export default function ProjectDetail() {
   return (
     <div className="layout">
       <DynamicHead
-        title={`${projectData.data?.attributes[locale].name} | ${t(
+        title={`${projectData?.data?.attributes[locale].name} | ${t(
           "common:general_title"
         )}`}
-        description={projectData.data?.attributes[locale].name}
+        description={projectData?.data?.attributes[locale].name}
       />
-      <div className={styles["wrapper"]}>
-        <Image
-          src={projectData.data?.attributes.imgUrl}
-          alt={projectData.data?.attributes[locale].name}
-          width={710}
-          height={400}
-          className={styles["image"]}
-        />
-        <div className={styles["info-section"]}>
-          <div className={styles["title"]}>
-            {projectData.data?.attributes[locale].name}
+      {isLoading ? (
+        <Spinner isLoading={isLoading} />
+      ) : (
+        <div className={styles["wrapper"]}>
+          <Image
+            src={projectData.data?.attributes.imgUrl}
+            alt={projectData.data?.attributes[locale].name}
+            width={710}
+            height={400}
+            className={styles["image"]}
+          />
+          <div className={styles["info-section"]}>
+            <div className={styles["title"]}>
+              {projectData.data?.attributes[locale].name}
+            </div>
+            <div className={styles["info"]}>
+              {projectInfoValueAndKey.map((item) => (
+                <div key={item.key}>
+                  {item.value && (
+                    <div key={item.key} className={styles["info-item"]}>
+                      <span className={styles["info-item-key"]}>
+                        {t(item.key)}:
+                      </span>
+                      <span className={styles["info-item-value"]}>
+                        {item.value}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            {renderBoxes()}
           </div>
-          <div className={styles["info"]}>
-            {projectInfoValueAndKey.map((item) => (
-              <div key={item.key}>
-                {item.value && (
-                  <div key={item.key} className={styles["info-item"]}>
-                    <span className={styles["info-item-key"]}>
-                      {t(item.key)}:
-                    </span>
-                    <span className={styles["info-item-value"]}>
-                      {item.value}
-                    </span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          {renderBoxes()}
         </div>
-      </div>
+      )}
     </div>
   );
 }

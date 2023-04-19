@@ -6,10 +6,6 @@ import { useEffect } from "react";
 export default function ProjectDetail() {
   const router = useRouter();
 
-  useEffect(() => {
-    router.push("/projects");
-  }, []);
-
   return (
     <div className="layout">
       <DynamicHead />

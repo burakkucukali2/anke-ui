@@ -5,42 +5,58 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { splitDateAccordingToMinusSignAndReverse } from "@/utils/helper";
+import { useEffect, useState } from "react";
 
-export default function ProjectDetail(props) {
+export default function ProjectDetail() {
   const { t } = useTranslation("common");
-  const locale = useRouter().locale;
+  const { locale, query } = useRouter();
+  const { projectId } = query;
+
+  const [projectData, setProjectData] = useState({});
+
+  const fetchProjectDetail = async () => {
+    const res = await fetch(
+      `https://anke-api.onrender.com/api/projects/${projectId}`
+    );
+    const data = await res.json();
+    setProjectData(data);
+  };
+
+  useEffect(() => {
+    fetchProjectDetail();
+  }, []);
 
   const projectInfoValueAndKey = [
     {
       key: "projectOwner",
-      value: props.projectData.data.attributes.projectOwner,
+      value: projectData.data?.attributes.projectOwner,
     },
     {
       key: "projectFeature",
-      value: props.projectData.data.attributes[locale].projectFeature,
+      value: projectData.data?.attributes[locale].projectFeature,
     },
     {
       key: "structureFeature",
-      value: props.projectData.data.attributes[locale].structureFeature,
+      value: projectData.data?.attributes[locale].structureFeature,
     },
     {
       key: "moldArea",
-      value: props.projectData.data.attributes.moldArea,
+      value: projectData.data?.attributes.moldArea,
     },
     {
       key: "location",
-      value: props.projectData.data.attributes.location,
+      value: projectData.data?.attributes.location,
     },
     {
       key: "startDate",
       value: splitDateAccordingToMinusSignAndReverse(
-        props.projectData.data.attributes.startDate ?? ""
+        projectData.data?.attributes.startDate ?? ""
       ),
     },
     {
       key: "endDate",
       value: splitDateAccordingToMinusSignAndReverse(
-        props.projectData.data.attributes.endDate
+        projectData.data?.attributes.endDate
       ),
     },
   ];
@@ -48,17 +64,17 @@ export default function ProjectDetail(props) {
   const projectBoxValueAndKey = [
     {
       key: "totalArea",
-      value: props.projectData.data.attributes.totalArea,
+      value: projectData.data?.attributes.totalArea,
       unit: "㎡",
     },
     {
       key: "ironAmount",
-      value: props.projectData.data.attributes.ironAmount,
+      value: projectData.data?.attributes.ironAmount,
       unit: "Ton",
     },
     {
       key: "concreteAmount",
-      value: props.projectData.data.attributes.concreteAmount,
+      value: projectData.data?.attributes.concreteAmount,
       unit: "m³",
     },
   ];
@@ -85,27 +101,25 @@ export default function ProjectDetail(props) {
     );
   };
 
-  console.log("props.projectData.data.attributes", props.projectData);
-
   return (
     <div className="layout">
       <DynamicHead
-        title={`${props.projectData.data.attributes[locale].name} | ${t(
+        title={`${projectData.data?.attributes[locale].name} | ${t(
           "common:general_title"
         )}`}
-        description={props.projectData.data.attributes[locale].name}
+        description={projectData.data?.attributes[locale].name}
       />
       <div className={styles["wrapper"]}>
         <Image
-          src={props.projectData.data.attributes.imgUrl ?? "/turnkey-img.png"}
-          alt={props.projectData.data.attributes[locale].name}
+          src={projectData.data?.attributes.imgUrl ?? "/turnkey-img.png"}
+          alt={projectData.data?.attributes[locale].name}
           width={710}
           height={400}
           className={styles["image"]}
         />
         <div className={styles["info-section"]}>
           <div className={styles["title"]}>
-            {props.projectData.data.attributes[locale].name}
+            {projectData.data?.attributes[locale].name}
           </div>
           <div className={styles["info"]}>
             {projectInfoValueAndKey.map((item) => (
@@ -131,14 +145,8 @@ export default function ProjectDetail(props) {
 }
 
 export async function getServerSideProps(ctx) {
-  const projectDetail = await fetch(
-    `https://anke-api.onrender.com/api/projects/${ctx.params.projectId}/?populate=*`
-  );
-  const projectDetailData = await projectDetail.json();
-
   return {
     props: {
-      projectData: projectDetailData,
       ...(await serverSideTranslations(ctx.locale, ["common"])),
       // Will be passed to the page component as props
     },

@@ -15,7 +15,9 @@ export default function ProjectDetail() {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchProjectDetail = async () => {
-    const res = await fetch(`http://localhost:1337/api/projects/${projectId}`);
+    const res = await fetch(
+      `https://anke-api.onrender.com/api/projects/${projectId}`
+    );
     const data = await res.json();
     setProjectData(data);
     setIsLoading(false);

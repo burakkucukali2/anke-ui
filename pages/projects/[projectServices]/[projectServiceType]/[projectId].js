@@ -100,7 +100,7 @@ export default function ProjectDetail() {
       </div>
     );
   };
-
+  console.log("test");
   return (
     <div className="layout">
       <DynamicHead

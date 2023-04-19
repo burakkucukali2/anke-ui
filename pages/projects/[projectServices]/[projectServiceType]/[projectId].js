@@ -111,7 +111,7 @@ export default function ProjectDetail() {
       />
       <div className={styles["wrapper"]}>
         <Image
-          src={projectData.data?.attributes.imgUrl ?? "/turnkey-img.png"}
+          src={projectData.data?.attributes.imgUrl}
           alt={projectData.data?.attributes[locale].name}
           width={710}
           height={400}

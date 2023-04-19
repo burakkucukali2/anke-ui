@@ -1,15 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import DynamicHead from "@/components/DynamicHead";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 export default function ProjectDetail() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push("/projects");
-  }, []);
-
   return (
     <div className="layout">
       <DynamicHead />
@@ -17,10 +9,10 @@ export default function ProjectDetail() {
   );
 }
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale, ["common"])),
+      ...(await serverSideTranslations(locale, ["common"])),
       // Will be passed to the page component as props
     },
   };

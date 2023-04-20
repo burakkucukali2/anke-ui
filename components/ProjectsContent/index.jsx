@@ -51,13 +51,8 @@ export default function ProjectsContent() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const fetchAllProjectsWithPage = async (page) => {
-    const url = `https://anke-api.onrender.com/api/projects?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`;
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application2/json",
-      },
-    });
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/projects?sortBy=createdAt&sortOrder=desc&page=1&limit=10`;
+    const response = await fetch(url);
     try {
       const json = await response.json();
       json.data.length < PAGE_SIZE && setIsAllProjectsLoaded(true);
@@ -72,7 +67,7 @@ export default function ProjectsContent() {
   };
 
   const fetchProjectsByService = async (service) => {
-    const url = `https://anke-api.onrender.com/api/categories/${SERVICES_IDS[service]}?populate=projects`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/categories/${SERVICES_IDS[service]}?populate=projects`;
     const response = await fetch(url);
     const json = await response.json();
     setProjects(json?.data?.attributes.projects.data);
@@ -119,7 +114,7 @@ export default function ProjectsContent() {
   const renderProjects = () => {
     return (
       <div className={styles["row"]}>
-        {projects.map((item, index) => (
+        {projects.map((item) => (
           <div key={item.id} className={styles["col"]}>
             <Link
               className={styles["anchor-class"]}

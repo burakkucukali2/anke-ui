@@ -4,6 +4,10 @@
     margin: 20px 0;
 }
 
+.header-logo {
+    outline: none;
+}
+
 .contact-info-wrapper {
     display: flex;
     align-items: center;

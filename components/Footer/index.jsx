@@ -23,11 +23,11 @@ export default function Footer() {
   const socialMedia = [
     {
       icon: <AiFillInstagram size={30} className={styles["social-icon"]} />,
-      link: "https://www.instagram.com/ankeyapi",
+      link: process.env.NEXT_PUBLIC_OWN_INSTAGRAM_URL,
     },
     {
       icon: <AiFillLinkedin size={30} className={styles["social-icon"]} />,
-      link: "https://www.instagram.com/ankeyapi",
+      link: process.env.NEXT_PUBLIC_OWN_LINKEDIN_URL,
     },
   ];
 

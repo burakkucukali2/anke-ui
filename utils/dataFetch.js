@@ -65,3 +65,13 @@ export async function addNewProject(project) {
     data,
   };
 }
+
+export async function getAllServices() {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/services`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return {
+    services: data,
+  };
+}

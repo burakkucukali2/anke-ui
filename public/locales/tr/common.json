@@ -24,7 +24,7 @@
   "view_projects": "Projeleri incele",
   "projects_title_as_service": "Projeler",
   "all_projects": "Tüm Projeler",
-  "turnkey": "Anahtar Teslim Projesi",
+  "turnkey": "Anahtar Teslim",
   "turnkey_projects": "Anahtar Teslim Projeler",
   "flat_for": "Kat Karşılığı",
   "exchangeForFloor": "Kat Karşılığı Projesi",
@@ -58,6 +58,5 @@
   "startDate": "Başlangıç Tarihi",
   "endDate": "Bitiş Tarihi",
   "load_more": "Daha fazla yükle",
-  "turnkey_short_title": "Anahtar Teslim",
   "no_projects_such_as": "Bu kategoride proje bulunmamaktadır..."
 }

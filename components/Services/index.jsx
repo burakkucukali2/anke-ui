@@ -1,3 +1,4 @@
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { useTranslation } from "next-i18next";
@@ -9,41 +10,8 @@ import "swiper/swiper-bundle.min.css";
 import styles from "./index.module.css";
 import Link from "next/link";
 
-export default function Services() {
+function Services({ serviceData }) {
   const { t } = useTranslation("common");
-
-  const services = [
-    {
-      title: t("common:turnkey_short_title"),
-      suffix: t("common:projects_title_as_service"),
-      description: t("common:turnkey_description"),
-      image: "/turnkey-img.png",
-    },
-    {
-      title: t("common:flat_for"),
-      suffix: t("common:construction"),
-      description: t("common:flat_for_description"),
-      image: "/exchange-for-flat.webp",
-    },
-    {
-      title: t("common:contracting"),
-      suffix: t("common:services"),
-      description: t("common:contracting_description"),
-      image: "/contracting-img.webp",
-    },
-    {
-      title: t("common:engineering"),
-      suffix: t("common:services"),
-      description: t("common:engineering_description"),
-      image: "/engineering-service.webp",
-    },
-    {
-      title: t("common:urban_transformation"),
-      suffix: t("common:services"),
-      description: t("common:urban_transformation_description"),
-      image: "/urban-transformation-img.webp",
-    },
-  ];
 
   return (
     <div className={styles["service-container"]}>
@@ -62,19 +30,19 @@ export default function Services() {
         }}
         className={styles["service-swiper"]}
       >
-        {services.map((item) => (
-          <SwiperSlide key={item.title}>
+        {serviceData.map((item) => (
+          <SwiperSlide key={item.name}>
             <div className={styles["slide-content"]}>
               <div className="slide-left">
                 <div className={styles["slide-content-title"]}>
-                  {item.title}
+                  {t(`common:${item.name}`)}
                   <span className={styles["projects-title"]}>
                     {" "}
-                    {item.suffix}
+                    {t(`common:${item.suffix}`)}
                   </span>
                 </div>
                 <div className={styles["slide-content-description"]}>
-                  {item.description}
+                  {t(`common:${item.name}_description`)}
                 </div>
                 <div className={styles["slide-content-button"]}>
                   <Link
@@ -88,8 +56,8 @@ export default function Services() {
               </div>
               <div className={`${styles["service-image"]} slide-right`}>
                 <Image
-                  src={item.image}
-                  alt={item.title}
+                  src={item.imgSrc}
+                  alt={item.name}
                   width={400}
                   height={400}
                 />
@@ -106,3 +74,5 @@ export default function Services() {
     </div>
   );
 }
+
+export default React.memo(Services);

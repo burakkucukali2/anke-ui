@@ -44,7 +44,13 @@ export default function HeaderTop() {
     <div className="layout">
       <div className={`${styles["header"]}`}>
         <Link href={"/"}>
-          <Image src="/anke-logo.png" alt="Logo" width={200} height={100} />
+          <Image
+            src="/anke-logo.png"
+            alt="Logo"
+            width={200}
+            height={100}
+            className={styles["header-logo"]}
+          />
         </Link>
         <div className={styles["mobile-lang-selection"]}>
           {renderLangSelection()}

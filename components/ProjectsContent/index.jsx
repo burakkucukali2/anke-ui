@@ -1,114 +1,91 @@
 import Image from "next/image";
 import styles from "./index.module.css";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import { generateLowercaseAndKebabCasePath } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
 import { Spinner, NoData } from "@/components";
+import {
+  getAllProjects,
+  getProjectsByCategoryId,
+  getAllCategories,
+} from "@/utils/dataFetch";
 
-const SERVICES_IDS = {
-  all: 0,
-  turnkey: 1,
-  contracting: 2,
-  exchangeForFloor: 3,
-  ongoing: 5,
-  completed: 6,
-  upcoming: 7,
-};
-
-const PATH_ACCORDING_TO_SERVICE = {
-  en: {
-    turnkey: "turnkey",
-    contracting: "contracting",
-    exchangeForFloor: "exchange-for-floor",
-    ongoing: "ongoing",
-    completed: "completed",
-    upcoming: "upcoming",
-  },
-  tr: {
-    turnkey: "anahtar-teslim-projeler",
-    contracting: "taahhüt-hizmeti-projeler",
-    exchangeForFloor: "kat-karsiligi-projeler",
-    ongoing: "devam-eden-projeler",
-    completed: "tamamlanan-projeler",
-    upcoming: "başlanacak-projeler",
-  },
-};
-
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 2;
 const INITIAL_PAGE = 1;
+const INITIAL_TOTAL_PAGE_COUNT = 0;
+const ALL_PROJECTS_CATEGORY_ID = "6441a923f9e38780f7e7ad7f";
 
 export default function ProjectsContent() {
   const { t } = useTranslation("common");
-  const locale = useRouter().locale;
 
-  const [page, setPage] = useState(INITIAL_PAGE);
-  const [selectedService, setSelectedService] = useState("all");
+  const totalPageCount = useRef(INITIAL_TOTAL_PAGE_COUNT);
+
   const [projects, setProjects] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(
+    ALL_PROJECTS_CATEGORY_ID
+  );
+  const [page, setPage] = useState(INITIAL_PAGE);
   const [isLoading, setIsLoading] = useState(true);
-  const [isAllProjectsLoaded, setIsAllProjectsLoaded] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const fetchAllProjectsWithPage = async (page) => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/projects?sortBy=createdAt&sortOrder=desc&page=1&limit=10`;
-    const response = await fetch(url);
-    try {
-      const json = await response.json();
-      json.data.length < PAGE_SIZE && setIsAllProjectsLoaded(true);
-      if (selectedService === "all") {
-        setProjects((prevState) => [...prevState, ...json.data]);
-      }
-      setIsLoadingMore(false);
-      setIsLoading(false);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const fetchProjectsByService = async (service) => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/categories/${SERVICES_IDS[service]}?populate=projects`;
-    const response = await fetch(url);
-    const json = await response.json();
-    setProjects(json?.data?.attributes.projects.data);
-    setIsLoading(false);
-  };
-
-  const handleServiceSelect = (e) => {
-    const service = e.target.value;
-    setSelectedService(service);
-    setIsLoading(true);
-  };
-
-  const resetParams = () => {
+  const resetParameters = () => {
     setPage(INITIAL_PAGE);
-    setIsLoadingMore(false);
-    setIsAllProjectsLoaded(true);
+    totalPageCount.current = INITIAL_TOTAL_PAGE_COUNT;
     setProjects([]);
+  };
+
+  const fetchAllProjects = async (page) => {
+    const response = await getAllProjects(page, PAGE_SIZE);
+    setIsLoading(false);
+    setIsLoadingMore(false);
+    setProjects((prevProjects) => [...prevProjects, ...response.data.projects]);
+    totalPageCount.current = response.data.totalPages;
+  };
+
+  const fetchProjectsByCategory = async (categoryId, page) => {
+    const response = await getProjectsByCategoryId(categoryId, page, PAGE_SIZE);
+    setIsLoading(false);
+    setIsLoadingMore(false);
+    setProjects((prevProjects) => [...prevProjects, ...response.data.projects]);
+    totalPageCount.current = response.data.totalPages;
+  };
+
+  const fetchAllCategories = async () => {
+    const response = await getAllCategories();
+    setCategories(response.categories.data);
+  };
+
+  const handlePageChange = () => {
+    setPage((prevPage) => prevPage + 1);
+    setIsLoadingMore(true);
+    console.log("page", page);
+  };
+
+  const handleServiceCategory = (e) => {
+    const categoryId = e.target.value;
+    setSelectedCategoryId(categoryId);
+    categoryId !== selectedCategoryId && resetParameters();
+    setIsLoading(true);
   };
 
   const renderSelectBox = () => {
     return (
       <div className={styles["selectbox-wrapper"]}>
         <select
-          value={selectedService}
-          onChange={handleServiceSelect}
+          value={selectedCategoryId}
+          onChange={handleServiceCategory}
           className={styles["selectbox"]}
         >
-          {Object.keys(SERVICES_IDS).map((service) => (
-            <option key={service} value={service}>
-              {t(`common:${service}_projects`)}
+          {categories.map((category) => (
+            <option key={category._id} value={category._id}>
+              {t(`common:${category.name}_projects`)}
             </option>
           ))}
         </select>
       </div>
     );
-  };
-
-  const handlePageChange = () => {
-    setPage(page + 1);
-    setIsLoadingMore(true);
-    fetchAllProjectsWithPage(page + 1);
   };
 
   const renderProjects = () => {
@@ -118,34 +95,30 @@ export default function ProjectsContent() {
           <div key={item.id} className={styles["col"]}>
             <Link
               className={styles["anchor-class"]}
-              href={`/projects/${
-                PATH_ACCORDING_TO_SERVICE[locale][item.attributes.type]
-              }/${generateLowercaseAndKebabCasePath(
-                item.attributes[locale].name
+              href={`/projects/${generateLowercaseAndKebabCasePath(
+                item.name
               )}/${item.id}`}
             >
               <div>
                 <Image
-                  src={item.attributes?.imgUrl || "/turnkey-img.png"}
-                  alt={item.attributes.type}
+                  src={item.imgUrl || "/turnkey-img.png"}
+                  alt={item.name}
                   width={350}
                   height={350}
                   className={styles["image"]}
                 />
               </div>
               <div className={styles["tags-wrapper"]}>
-                {item.attributes[locale].categories.map((category, index) => (
+                {item.categories.map((category, index) => (
                   <div key={index} className={styles["service-type-tag"]}>
-                    {t(`common:${category}`)}
+                    {t(`common:${category.name}`)}
                   </div>
                 ))}
               </div>
-              <div className={styles["project-label"]}>
-                {item.attributes[locale].name}
-              </div>
+              <div className={styles["project-label"]}>{item.name}</div>
               <div className={styles["project-description"]}>
-                {item.attributes.projectFeature}
-                <span>{item.attributes.location}</span>
+                {item.projectFeature}
+                <span>{item.location}</span>
               </div>
             </Link>
           </div>
@@ -157,7 +130,7 @@ export default function ProjectsContent() {
   const renderLoadMoreButton = () => {
     return (
       <>
-        {!isAllProjectsLoaded && (
+        {totalPageCount.current !== page && projects.length > 0 && (
           <button
             onClick={handlePageChange}
             className={styles["load-more-button"]}
@@ -174,13 +147,16 @@ export default function ProjectsContent() {
   };
 
   useEffect(() => {
-    resetParams();
-    if (selectedService && selectedService !== "all") {
-      fetchProjectsByService(selectedService);
+    if (selectedCategoryId === ALL_PROJECTS_CATEGORY_ID) {
+      fetchAllProjects(page);
     } else {
-      fetchAllProjectsWithPage(page);
+      fetchProjectsByCategory(selectedCategoryId, page);
     }
-  }, [selectedService]);
+  }, [selectedCategoryId, page]);
+
+  useEffect(() => {
+    fetchAllCategories();
+  }, []);
 
   return (
     <div className={styles["wrapper"]}>

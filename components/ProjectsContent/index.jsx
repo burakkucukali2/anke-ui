@@ -97,7 +97,7 @@ export default function ProjectsContent() {
               className={styles["anchor-class"]}
               href={`/projects/${generateLowercaseAndKebabCasePath(
                 item.name
-              )}/${item.id}`}
+              )}/${item._id}`}
             >
               <div>
                 <Image

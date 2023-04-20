@@ -3,62 +3,58 @@ import { Spinner } from "@/components";
 import Image from "next/image";
 import { splitDateAccordingToMinusSignAndReverse } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
 import styles from "./index.module.css";
 
 function ProjectDetailContent({ projectData, isLoading }) {
   const { t } = useTranslation("common");
-  const { locale } = useRouter();
 
   const projectInfoValueAndKey = [
     {
       key: "projectOwner",
-      value: projectData?.data?.attributes?.projectOwner,
+      value: projectData?.projectOwner,
     },
     {
       key: "projectFeature",
-      value: projectData?.data?.attributes[locale]?.projectFeature,
+      value: projectData?.projectFeature,
     },
     {
       key: "structureFeature",
-      value: projectData?.data?.attributes[locale]?.structureFeature,
+      value: projectData?.structureFeature,
     },
     {
       key: "moldArea",
-      value: projectData?.data?.attributes?.moldArea,
+      value: projectData?.moldArea,
     },
     {
       key: "location",
-      value: projectData?.data?.attributes?.location,
+      value: projectData?.location,
     },
     {
       key: "startDate",
       value: splitDateAccordingToMinusSignAndReverse(
-        projectData?.data?.attributes?.startDate ?? ""
+        projectData?.startDate ?? ""
       ),
     },
     {
       key: "endDate",
-      value: splitDateAccordingToMinusSignAndReverse(
-        projectData?.data?.attributes?.endDate
-      ),
+      value: splitDateAccordingToMinusSignAndReverse(projectData?.endDate),
     },
   ];
 
   const projectBoxValueAndKey = [
     {
       key: "totalArea",
-      value: projectData?.data?.attributes?.totalArea,
+      value: projectData?.totalArea,
       unit: "㎡",
     },
     {
       key: "ironAmount",
-      value: projectData?.data?.attributes?.ironAmount,
+      value: projectData?.ironAmount,
       unit: "Ton",
     },
     {
       key: "concreteAmount",
-      value: projectData?.data?.attributes?.concreteAmount,
+      value: projectData?.concreteAmount,
       unit: "m³",
     },
   ];
@@ -112,16 +108,14 @@ function ProjectDetailContent({ projectData, isLoading }) {
       ) : (
         <div className={styles["wrapper"]}>
           <Image
-            src={projectData?.data?.attributes.imgUrl ?? "/turnkey-img.png"}
-            alt={projectData?.data?.attributes[locale].name}
+            src={projectData?.imgUrl ?? "/turnkey-img.png"}
+            alt={projectData?.name}
             width={710}
             height={400}
             className={styles["image"]}
           />
           <div className={styles["info-section"]}>
-            <div className={styles["title"]}>
-              {projectData?.data?.attributes[locale].name}
-            </div>
+            <div className={styles["title"]}>{projectData?.name}</div>
             {renderProjectInfos()}
             {renderBoxes()}
           </div>

@@ -20,7 +20,7 @@ export async function getProjectById(id) {
   const data = await response.json();
 
   return {
-    data,
+    projectDetails: data,
   };
 }
 

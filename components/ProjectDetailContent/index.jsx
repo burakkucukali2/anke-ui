@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from "@/components";
 import Image from "next/image";
-import { splitDateAccordingToMinusSignAndReverse } from "@/utils/helper";
+import { convertISODateToReadableDate } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
 import styles from "./index.module.css";
 
@@ -31,13 +31,11 @@ function ProjectDetailContent({ projectData, isLoading }) {
     },
     {
       key: "startDate",
-      value: splitDateAccordingToMinusSignAndReverse(
-        projectData?.startDate ?? ""
-      ),
+      value: convertISODateToReadableDate(projectData?.startDate),
     },
     {
       key: "endDate",
-      value: splitDateAccordingToMinusSignAndReverse(projectData?.endDate),
+      value: convertISODateToReadableDate(projectData?.endDate),
     },
   ];
 
@@ -125,4 +123,4 @@ function ProjectDetailContent({ projectData, isLoading }) {
   );
 }
 
-export default ProjectDetailContent;
+export default React.memo(ProjectDetailContent);

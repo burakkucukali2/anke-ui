@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import styles from "./index.module.css";
 import Link from "next/link";
@@ -11,12 +12,12 @@ import {
   getAllCategories,
 } from "@/utils/dataFetch";
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 12;
 const INITIAL_PAGE = 1;
 const INITIAL_TOTAL_PAGE_COUNT = 0;
 const ALL_PROJECTS_CATEGORY_ID = "6441a923f9e38780f7e7ad7f";
 
-export default function ProjectsContent() {
+function ProjectsContent() {
   const { t } = useTranslation("common");
 
   const totalPageCount = useRef(INITIAL_TOTAL_PAGE_COUNT);
@@ -172,3 +173,5 @@ export default function ProjectsContent() {
     </div>
   );
 }
+
+export default React.memo(ProjectsContent);

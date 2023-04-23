@@ -1,9 +1,8 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import styles from "./index.module.css";
-import Image from "next/image";
 
-export default function AboutContent() {
+function AboutContent() {
   const { t } = useTranslation("common");
 
   return (
@@ -19,3 +18,5 @@ export default function AboutContent() {
     </div>
   );
 }
+
+export default AboutContent;

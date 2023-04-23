@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import styles from "./index.module.css";
 import { AiOutlineMail, AiFillPhone } from "react-icons/ai";
@@ -8,7 +9,7 @@ import Link from "next/link";
 const MY_EMAIL_ADDRESS = "info@ankeyapi.com";
 const MY_PHONE_NUMBER = "+90 212 543 57 53";
 
-export default function HeaderTop() {
+function HeaderTop() {
   const { t, i18n } = useTranslation("common");
   const router = useRouter();
   const { pathname, asPath, query } = router;
@@ -83,3 +84,5 @@ export default function HeaderTop() {
     </div>
   );
 }
+
+export default React.memo(HeaderTop);

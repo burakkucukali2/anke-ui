@@ -1,8 +1,9 @@
+import React from "react";
 import { useTranslation } from "next-i18next";
 import styles from "./index.module.css";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 
-export default function Footer() {
+function Footer() {
   const { t } = useTranslation("common");
 
   const contactInfo = [
@@ -68,3 +69,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default React.memo(Footer);

@@ -1,8 +1,9 @@
+import React from "react";
 import styles from "./index.module.css";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 
-export default function BannerSection({ scrollTo }) {
+function BannerSection({ scrollTo }) {
   const { t } = useTranslation("common");
 
   return (
@@ -30,3 +31,5 @@ export default function BannerSection({ scrollTo }) {
     </div>
   );
 }
+
+export default React.memo(BannerSection);

@@ -105,7 +105,7 @@ function ProjectsContent() {
                   src={item.imgUrl || "/turnkey-img.png"}
                   alt={item.name}
                   width={350}
-                  height={350}
+                  height={450}
                   className={styles["image"]}
                 />
               </div>
@@ -118,7 +118,6 @@ function ProjectsContent() {
               </div>
               <div className={styles["project-label"]}>{item.name}</div>
               <div className={styles["project-description"]}>
-                {item.projectFeature}
                 <span>{item.location}</span>
               </div>
             </Link>

@@ -9,6 +9,10 @@
     opacity: 0.2;
 }
 
+.image {
+    border-radius: 15px;
+}
+
 .selectbox {
     padding: 7px;
     border: 2px solid #C4C4C4;

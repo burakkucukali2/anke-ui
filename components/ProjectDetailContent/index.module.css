@@ -4,6 +4,11 @@
     gap: 10%;
 }
 
+.info-section {
+    width: 50%;
+    height: 100%;
+}
+
 .spinner-wrapper {
     display: flex;
     justify-content: center;

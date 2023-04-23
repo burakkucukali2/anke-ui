@@ -5,6 +5,8 @@ import { convertISODateToReadableDate } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
 import styles from "./index.module.css";
 
+const DEFAULT_PROJECT_IMAGE = "/default-anke-large.webp";
+
 function ProjectDetailContent({ projectData, isLoading }) {
   const { t } = useTranslation("common");
 
@@ -100,13 +102,12 @@ function ProjectDetailContent({ projectData, isLoading }) {
     <>
       {isLoading ? (
         <div className={styles["spinner-wrapper"]}>
-          {" "}
           <Spinner isLoading={isLoading} />
         </div>
       ) : (
         <div className={styles["wrapper"]}>
           <Image
-            src={projectData?.imgUrl ?? "/turnkey-img.png"}
+            src={projectData?.largeImgSrc ?? DEFAULT_PROJECT_IMAGE}
             alt={projectData?.name}
             width={710}
             height={400}

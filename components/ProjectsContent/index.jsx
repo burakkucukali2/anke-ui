@@ -16,6 +16,7 @@ const PAGE_SIZE = 12;
 const INITIAL_PAGE = 1;
 const INITIAL_TOTAL_PAGE_COUNT = 0;
 const ALL_PROJECTS_CATEGORY_ID = "6441a923f9e38780f7e7ad7f";
+const DEFAULT_PROJECT_IMAGE = "/default-anke.webp";
 
 function ProjectsContent() {
   const { t } = useTranslation("common");
@@ -102,7 +103,7 @@ function ProjectsContent() {
             >
               <div>
                 <Image
-                  src={item.imgUrl || "/turnkey-img.png"}
+                  src={item.thumbnailImgSrc || DEFAULT_PROJECT_IMAGE}
                   alt={item.name}
                   width={350}
                   height={450}

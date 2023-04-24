@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./index.module.css";
 
-function Spinner(props) {
-  if (!props.isLoading) return null;
+function Spinner({ overlayClassName, spinnerClassName, isLoading }) {
+  if (!isLoading) return null;
 
   return (
-    <div className={styles["loading-overlay"]}>
-      <div className={styles["spinner"]} />
+    <div className={`${styles["loading-overlay"]} ${overlayClassName}`}>
+      <div className={`${styles["spinner"]} ${spinnerClassName}`} />
     </div>
   );
 }

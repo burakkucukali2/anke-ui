@@ -31,9 +31,11 @@
 }
 
 @media (max-width: 768px) {
+
     .about_text_section {
         width: 80%;
     }
+
     .about-slogan {
         width: 100%;
         font-size: 1.5rem;

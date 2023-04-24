@@ -101,7 +101,7 @@ function ProjectsContent() {
                 item.name
               )}/${item._id}`}
             >
-              <div>
+              <div className={styles["image-wrapper"]}>
                 <Image
                   src={item.thumbnailImgSrc || DEFAULT_PROJECT_IMAGE}
                   alt={item.name}
@@ -137,7 +137,11 @@ function ProjectsContent() {
             className={styles["load-more-button"]}
           >
             {isLoadingMore ? (
-              <Spinner isLoading={isLoadingMore} />
+              <Spinner
+                isLoading={isLoadingMore}
+                overlayClassName={styles["loading-overlay"]}
+                spinnerClassName={styles["spinner"]}
+              />
             ) : (
               t("common:load_more")
             )}
@@ -148,11 +152,9 @@ function ProjectsContent() {
   };
 
   useEffect(() => {
-    if (selectedCategoryId === ALL_PROJECTS_CATEGORY_ID) {
-      fetchAllProjects(page);
-    } else {
-      fetchProjectsByCategory(selectedCategoryId, page);
-    }
+    selectedCategoryId === ALL_PROJECTS_CATEGORY_ID
+      ? fetchAllProjects(page)
+      : fetchProjectsByCategory(selectedCategoryId, page);
   }, [selectedCategoryId, page]);
 
   useEffect(() => {

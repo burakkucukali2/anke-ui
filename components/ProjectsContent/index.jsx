@@ -101,15 +101,13 @@ function ProjectsContent() {
                 item.name
               )}/${item._id}`}
             >
-              <div className={styles["image-wrapper"]}>
-                <Image
-                  src={item.thumbnailImgSrc || DEFAULT_PROJECT_IMAGE}
-                  alt={item.name}
-                  width={350}
-                  height={450}
-                  className={styles["image"]}
-                />
-              </div>
+              <Image
+                src={item.thumbnailImgSrc || DEFAULT_PROJECT_IMAGE}
+                alt={item.name}
+                width={350}
+                height={450}
+                className={styles["image"]}
+              />
               <div className={styles["tags-wrapper"]}>
                 {item.categories.map((category, index) => (
                   <div key={index} className={styles["service-type-tag"]}>

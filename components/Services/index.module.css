@@ -37,7 +37,7 @@
 
 .slide-content-link {
   text-decoration: none;
-  color: #B58E38;
+  color: var(--main-color);
   font-weight: 600;
   font-size: 14px;
   line-height: 16px;
@@ -53,12 +53,12 @@
 }
 
 .navigation:hover {
-  color: #B58E38;
+  color: var(--main-color);
   cursor: pointer;
 }
 
 .projects-title {
-  color: #B58E38;
+  color: var(--main-color);
 }
 
 @media (max-width: 1052px) {

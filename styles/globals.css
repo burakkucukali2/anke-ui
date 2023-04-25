@@ -1,9 +1,12 @@
-
 body {
   font-size: 16px;
   color: #333;
   background-color: #fff;
   font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --main-color: #81BFC8;
 }
 
 .layout {

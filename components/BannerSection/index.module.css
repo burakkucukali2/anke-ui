@@ -39,7 +39,7 @@
 }
 
 .banner-text {
-    font-size: 60px;
+    font-size: 52px;
     line-height: 70px;
     text-align: center;
 }
@@ -47,7 +47,7 @@
 .banner-contact-button {
     width: 325px;
     height: 58px;
-    background: linear-gradient(180deg, #BF8471 0%, rgba(203, 162, 84, 0.99) 99.99%, rgba(203, 162, 84, 0.99) 100%);
+    background: linear-gradient(180deg, #1d8d9d 0%, var(--main-color) 99.99%, rgba(224, 238, 228, 0.99) 100%);
     border-radius: 15px;
     text-decoration: none;
     font-weight: 700;
@@ -58,7 +58,7 @@
 }
 
 .banner-contact-button:hover {
-    background: #ecb96e;
+    background: #43d6ec;
     color: #FFF;
 }
 

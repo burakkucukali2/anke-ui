@@ -23,7 +23,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 19px;
-    color: #B58E38;
+    color: var(--main-color);
 }
 
 .contact-value {
@@ -34,7 +34,7 @@
 }
 
 .contact-icon {
-    color: #B58E38;
+    color: var(--main-color);
 }
 
 .vertical-divider {
@@ -46,7 +46,7 @@
 .nav {
     height: 60px;
     width: 100%;
-    background-color: #B58E38;
+    background-color: var(--main-color);
     display: flex;
     align-items: center;
     justify-content: center;

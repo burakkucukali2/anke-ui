@@ -25,7 +25,7 @@ function ProjectDetailContent({ projectData, isLoading }) {
     },
     {
       key: "moldArea",
-      value: projectData?.moldArea,
+      value: `${projectData?.moldArea} ㎡`,
     },
     {
       key: "location",

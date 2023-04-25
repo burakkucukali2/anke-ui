@@ -103,9 +103,13 @@
         line-height: 19px;
     }
 
+    .info-item-value {
+        margin: 0
+    }
+
     .info-section {
         margin-top: 20px;
-        padding: 0 20px;
+        width: 100%;
     }
 
     .image {

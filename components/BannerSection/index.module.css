@@ -63,10 +63,12 @@
 }
 
 @media (max-width: 1052px) {
+
     .banner-text {
         font-size: 40px;
         line-height: 50px;
     }
+
     .banner-contact-button {
         width: 250px;
         height: 45px;

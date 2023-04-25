@@ -25,7 +25,7 @@ function ProjectDetailContent({ projectData, isLoading }) {
     },
     {
       key: "moldArea",
-      value: `${projectData?.moldArea} ㎡`,
+      value: projectData?.moldArea,
     },
     {
       key: "location",
@@ -67,7 +67,9 @@ function ProjectDetailContent({ projectData, isLoading }) {
             {item.value && (
               <div key={item.key} className={styles["info-item"]}>
                 <span className={styles["info-item-key"]}>{t(item.key)}:</span>
-                <span className={styles["info-item-value"]}>{item.value}</span>
+                <span className={styles["info-item-value"]}>
+                  {item.value} {item.key === "moldArea" ? "㎡" : ""}
+                </span>
               </div>
             )}
           </div>

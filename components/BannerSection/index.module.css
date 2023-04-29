@@ -45,13 +45,13 @@
 }
 
 .banner-contact-button {
-    width: 325px;
+    width: 225px;
     height: 58px;
     background: linear-gradient(180deg, #1d8d9d 0%, var(--main-color) 99.99%, rgba(224, 238, 228, 0.99) 100%);
     border-radius: 15px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 22px;
     line-height: 29px;
     color: #FFF;
     margin-top:50px

@@ -49,7 +49,7 @@ function HeaderTop() {
             src="/anke-logo.png"
             alt="Logo"
             width={200}
-            height={100}
+            height={120}
             className={styles["header-logo"]}
           />
         </Link>

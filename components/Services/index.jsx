@@ -54,14 +54,13 @@ function Services({ serviceData }) {
                   </Link>
                 </div>
               </div>
-              <div className={`${styles["service-image"]} slide-right`}>
-                <Image
-                  src={item.imgSrc}
-                  alt={item.name}
-                  width={400}
-                  height={400}
-                />
-              </div>
+              <Image
+                src={item.imgSrc}
+                alt={item.name}
+                width={400}
+                height={400}
+                className={`${styles["service-image"]} slide-right`}
+              />
             </div>
           </SwiperSlide>
         ))}

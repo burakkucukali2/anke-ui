@@ -6,17 +6,31 @@ import { useEffect, useRef, useState } from "react";
 import { generateLowercaseAndKebabCasePath } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
 import { Spinner, NoData } from "@/components";
-import {
-  getAllProjects,
-  getProjectsByCategoryId,
-  getAllCategories,
-} from "@/utils/dataFetch";
+import { getAllProjects, getProjectsByCategoryId } from "@/utils/dataFetch";
 
 const PAGE_SIZE = 12;
 const INITIAL_PAGE = 1;
 const INITIAL_TOTAL_PAGE_COUNT = 0;
 const ALL_PROJECTS_CATEGORY_ID = "6441a923f9e38780f7e7ad7f";
 const DEFAULT_PROJECT_IMAGE = "/default-anke.webp";
+const CATEGORIES = [
+  {
+    _id: "6441a923f9e38780f7e7ad7f",
+    name: "all",
+  },
+  {
+    _id: "64407e6ed784226d764ae20c",
+    name: "completed",
+  },
+  {
+    _id: "64407eb680ef9213960be3ff",
+    name: "ongoing",
+  },
+  {
+    _id: "64407ed955c84b663aa5a3f1",
+    name: "upcoming",
+  },
+];
 
 function ProjectsContent() {
   const { t } = useTranslation("common");
@@ -24,7 +38,6 @@ function ProjectsContent() {
   const totalPageCount = useRef(INITIAL_TOTAL_PAGE_COUNT);
 
   const [projects, setProjects] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     ALL_PROJECTS_CATEGORY_ID
   );
@@ -54,11 +67,6 @@ function ProjectsContent() {
     totalPageCount.current = response.data.totalPages;
   };
 
-  const fetchAllCategories = async () => {
-    const response = await getAllCategories();
-    setCategories(response.categories.data);
-  };
-
   const handlePageChange = () => {
     setPage((prevPage) => prevPage + 1);
     setIsLoadingMore(true);
@@ -72,7 +80,7 @@ function ProjectsContent() {
     setIsLoading(true);
   };
 
-  const renderSelectBox = () => {
+  const renderCategorySelectBox = () => {
     return (
       <div className={styles["selectbox-wrapper"]}>
         <select
@@ -80,9 +88,9 @@ function ProjectsContent() {
           onChange={handleServiceCategory}
           className={styles["selectbox"]}
         >
-          {categories.map((category) => (
+          {CATEGORIES.map((category) => (
             <option key={category._id} value={category._id}>
-              {t(`common:${category.name}_projects`)}
+              {`${t(`common:${category.name}_projects`)}imiz`}
             </option>
           ))}
         </select>
@@ -155,13 +163,9 @@ function ProjectsContent() {
       : fetchProjectsByCategory(selectedCategoryId, page);
   }, [selectedCategoryId, page]);
 
-  useEffect(() => {
-    fetchAllCategories();
-  }, []);
-
   return (
     <div className={styles["wrapper"]}>
-      {renderSelectBox()}
+      {renderCategorySelectBox()}
       {isLoading ? (
         <Spinner isLoading={isLoading} />
       ) : (

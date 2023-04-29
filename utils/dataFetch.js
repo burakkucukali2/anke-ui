@@ -40,16 +40,6 @@ export async function getProjectsByCategoryId(
   };
 }
 
-export async function getAllCategories() {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/categories`;
-  const response = await fetch(url);
-  const data = await response.json();
-
-  return {
-    categories: data,
-  };
-}
-
 export async function addNewProject(project) {
   const url = `${process.env.NEXT_PUBLIC_API_URL}/projects/add-new-project`;
   const response = await fetch(url, {

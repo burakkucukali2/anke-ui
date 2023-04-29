@@ -58,5 +58,7 @@
   "startDate": "Start Date",
   "endDate": "End Date",
   "load_more": "Load More",
-  "no_projects_such_as": "There is no project available in this category..."
+  "no_projects_such_as": "There is no project available in this category...",
+  "company_name": "OZTURK",
+  "group": "GROUP"
 }

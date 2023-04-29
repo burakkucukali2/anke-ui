@@ -1,7 +1,8 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
-import styles from "./index.module.css";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
+import { CompanySection } from "@/components";
+import styles from "./index.module.css";
 
 function Footer() {
   const { t } = useTranslation("common");
@@ -65,6 +66,7 @@ function Footer() {
       <div>
         {renderContactInfo()}
         {renderSocialMedia()}
+        <CompanySection />
       </div>
     </footer>
   );

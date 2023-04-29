@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import { useTranslation } from "next-i18next";
 
-function Company() {
+function CompanySection() {
   const { t } = useTranslation("common");
 
   return (
@@ -21,4 +21,4 @@ function Company() {
   );
 }
 
-export default React.memo(Company);
+export default React.memo(CompanySection);

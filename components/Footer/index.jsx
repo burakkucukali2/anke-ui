@@ -62,8 +62,8 @@ function Footer() {
       <div>
         {renderContactInfo()}
         {renderSocialMedia()}
-        <CompanySection />
       </div>
+      <CompanySection />
     </footer>
   );
 }

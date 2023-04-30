@@ -32,6 +32,7 @@ function ProjectsContent() {
   const { t } = useTranslation("common");
 
   const totalPageCount = useRef(INITIAL_TOTAL_PAGE_COUNT);
+  const buttonClickedRef = useRef(false);
 
   const [projects, setProjects] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
@@ -49,6 +50,7 @@ function ProjectsContent() {
 
   const fetchAllProjects = async (page) => {
     const response = await getAllProjects(page, PAGE_SIZE);
+    buttonClickedRef.current = false;
     setIsLoading(false);
     setIsLoadingMore(false);
     setProjects((prevProjects) => [...prevProjects, ...response.data.projects]);
@@ -57,6 +59,7 @@ function ProjectsContent() {
 
   const fetchProjectsByCategory = async (categoryId, page) => {
     const response = await getProjectsByCategoryId(categoryId, page, PAGE_SIZE);
+    buttonClickedRef.current = false;
     setIsLoading(false);
     setIsLoadingMore(false);
     setProjects((prevProjects) => [...prevProjects, ...response.data.projects]);
@@ -66,7 +69,7 @@ function ProjectsContent() {
   const handlePageChange = () => {
     setPage((prevPage) => prevPage + 1);
     setIsLoadingMore(true);
-    console.log("page", page);
+    buttonClickedRef.current = true;
   };
 
   const handleServiceCategory = (e) => {

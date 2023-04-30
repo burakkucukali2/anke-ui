@@ -16,18 +16,6 @@ function ProjectDetailContent({ projectData, isLoading }) {
       value: projectData?.projectOwner,
     },
     {
-      key: "projectFeature",
-      value: projectData?.projectFeature,
-    },
-    {
-      key: "structureFeature",
-      value: projectData?.structureFeature,
-    },
-    {
-      key: "moldArea",
-      value: projectData?.moldArea,
-    },
-    {
       key: "location",
       value: projectData?.location,
     },
@@ -39,23 +27,13 @@ function ProjectDetailContent({ projectData, isLoading }) {
       key: "endDate",
       value: convertISODateToReadableDate(projectData?.endDate),
     },
-  ];
-
-  const projectBoxValueAndKey = [
     {
-      key: "totalArea",
-      value: projectData?.totalArea,
-      unit: "㎡",
+      key: "projectFeature",
+      value: projectData?.projectFeature,
     },
     {
-      key: "ironAmount",
-      value: projectData?.ironAmount,
-      unit: "Ton",
-    },
-    {
-      key: "concreteAmount",
-      value: projectData?.concreteAmount,
-      unit: "m³",
+      key: "structureFeature",
+      value: projectData?.structureFeature,
     },
   ];
 
@@ -70,28 +48,6 @@ function ProjectDetailContent({ projectData, isLoading }) {
                 <span className={styles["info-item-value"]}>
                   {item.value} {item.key === "moldArea" ? "㎡" : ""}
                 </span>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  const renderBoxes = () => {
-    return (
-      <div className={styles["box-group"]}>
-        {projectBoxValueAndKey.map((item) => (
-          <div key={item.key}>
-            {item.value && (
-              <div key={item.key} className={styles["box"]}>
-                <div className={styles["box-value"]}>
-                  <div className={styles["box-value-text"]}>{item.value}</div>
-                  <div className={styles["box-value-unit"]}>{item.unit}</div>
-                </div>
-                <div className={styles["box-title"]}>
-                  {t(`common:${item.key}`)}
-                </div>
               </div>
             )}
           </div>
@@ -118,7 +74,6 @@ function ProjectDetailContent({ projectData, isLoading }) {
           <div className={styles["info-section"]}>
             <div className={styles["title"]}>{projectData?.name}</div>
             {renderProjectInfos()}
-            {renderBoxes()}
           </div>
         </div>
       )}

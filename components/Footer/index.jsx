@@ -16,10 +16,6 @@ function Footer() {
       title: t("common:phone"),
       value: "+902125435753",
     },
-    {
-      title: t("common:fax"),
-      value: "+902125434230",
-    },
   ];
 
   const socialMedia = [

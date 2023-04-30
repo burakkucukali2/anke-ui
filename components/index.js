@@ -9,6 +9,7 @@ import Spinner from "./Spinner";
 import ProjectDetailContent from "./ProjectDetailContent";
 import NoData from "./NoData";
 import CompanySection from "./CompanySection";
+import ProjectItem from "./ProjectsContent/ProjectItem";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   ProjectDetailContent,
   NoData,
   CompanySection,
+  ProjectItem,
 };

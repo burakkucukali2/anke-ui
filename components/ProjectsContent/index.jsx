@@ -1,18 +1,14 @@
 import React from "react";
-import Image from "next/image";
 import styles from "./index.module.css";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { generateLowercaseAndKebabCasePath } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
-import { Spinner, NoData } from "@/components";
+import { Spinner, NoData, ProjectItem } from "@/components";
 import { getAllProjects, getProjectsByCategoryId } from "@/utils/dataFetch";
 
 const PAGE_SIZE = 12;
 const INITIAL_PAGE = 1;
 const INITIAL_TOTAL_PAGE_COUNT = 0;
 const ALL_PROJECTS_CATEGORY_ID = "6441a923f9e38780f7e7ad7f";
-const DEFAULT_PROJECT_IMAGE = "/default-anke.webp";
 const CATEGORIES = [
   {
     _id: "6441a923f9e38780f7e7ad7f",
@@ -101,35 +97,7 @@ function ProjectsContent() {
   const renderProjects = () => {
     return (
       <div className={styles["row"]}>
-        {projects.map((item) => (
-          <div key={item.id} className={styles["col"]}>
-            <Link
-              className={styles["anchor-class"]}
-              href={`/projects/${generateLowercaseAndKebabCasePath(
-                item.name
-              )}/${item._id}`}
-            >
-              <Image
-                src={item.thumbnailImgSrc || DEFAULT_PROJECT_IMAGE}
-                alt={item.name}
-                width={350}
-                height={450}
-                className={styles["image"]}
-              />
-              <div className={styles["tags-wrapper"]}>
-                {item.categories.map((category, index) => (
-                  <div key={index} className={styles["service-type-tag"]}>
-                    {t(`common:${category.name}`)}
-                  </div>
-                ))}
-              </div>
-              <div className={styles["project-label"]}>{item.name}</div>
-              <div className={styles["project-description"]}>
-                <span>{item.location}</span>
-              </div>
-            </Link>
-          </div>
-        ))}
+        <ProjectItem projects={projects} />
       </div>
     );
   };

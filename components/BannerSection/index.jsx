@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "./index.module.css";
 import Image from "next//image";
+import { useTranslation } from "next-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/swiper-bundle.css";
-
-import { useTranslation } from "next-i18next";
+import styles from "./index.module.css";
 
 function BannerSection({ scrollTo }) {
   const { t } = useTranslation("common");

@@ -1,12 +1,11 @@
 import React from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
 import { Navigation } from "swiper";
 import { useTranslation } from "next-i18next";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Image from "next/image";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/swiper-bundle.min.css";
+import "swiper/swiper-bundle.css";
 import styles from "./index.module.css";
 import Link from "next/link";
 
@@ -21,9 +20,10 @@ function Services({ serviceData }) {
         size={40}
       />
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         slidesPerView={1}
         loop
+        autoplay={{ delay: 4000 }}
         navigation={{
           prevEl: "#navigation-prev",
           nextEl: "#navigation-next",
@@ -33,7 +33,7 @@ function Services({ serviceData }) {
         {serviceData.map((item) => (
           <SwiperSlide key={item.name}>
             <div className={styles["slide-content"]}>
-              <div className="slide-left">
+              <div>
                 <div className={styles["slide-content-title"]}>
                   {t(`common:${item.name}`)}
                   <span className={styles["projects-title"]}>
@@ -59,7 +59,7 @@ function Services({ serviceData }) {
                 alt={item.name}
                 width={400}
                 height={400}
-                className={`${styles["service-image"]} slide-right`}
+                className={styles["service-image"]}
               />
             </div>
           </SwiperSlide>

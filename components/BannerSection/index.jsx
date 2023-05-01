@@ -47,7 +47,8 @@ function BannerSection({ scrollTo }) {
           modules={[Autoplay]}
           slidesPerView={1}
           loop
-          autoplay={{ delay: 5000 }}
+          speed={1500}
+          autoplay={{ delay: 4000 }}
           pagination={{ clickable: true }}
         >
           {renderSlider()}

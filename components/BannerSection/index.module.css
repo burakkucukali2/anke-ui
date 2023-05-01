@@ -78,15 +78,26 @@
 
 @media (max-width: 1052px) {
 
+    .banner-text-container {
+        width: 80vw;
+        top:45%;
+        transform: translate(-50%, 25%);
+    }
+
+    .image-container {
+        height: 59vh;
+    }
+
     .banner-text {
-        font-size: 40px;
+        font-size: 30px;
         line-height: 50px;
     }
 
     .banner-contact-button {
-        width: 250px;
+        width: 180px;
         height: 45px;
-        font-size: 20px;
-        line-height: 23px;
+        font-size: 18px;
+        line-height: 20px;
+        margin-top:20px;
     }
 }

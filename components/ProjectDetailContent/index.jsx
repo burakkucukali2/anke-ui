@@ -78,6 +78,22 @@ function ProjectDetailContent({ projectData, isLoading }) {
     );
   };
 
+  const renderBoxAccordion = () => (
+    <>
+      <span
+        onClick={() => setIsRenderedBoxes((prevState) => !prevState)}
+        className={styles["show-box-details-text"]}
+      >
+        <IoIosArrowDropdown
+          size={15}
+          className={styles[`detail-arrow-icon${isRenderedBoxes ? "-up" : ""}`]}
+        />
+        Yapı Detaylarını {isRenderedBoxes ? "Kapat" : "Görüntüle"}{" "}
+      </span>
+      {isRenderedBoxes && renderBoxes()}
+    </>
+  );
+
   const renderProjectInfos = () => {
     return (
       <div className={styles["info-section"]}>
@@ -98,19 +114,8 @@ function ProjectDetailContent({ projectData, isLoading }) {
             </div>
           ))}
         </div>
-        <span
-          onClick={() => setIsRenderedBoxes((prevState) => !prevState)}
-          className={styles["show-box-details-text"]}
-        >
-          <IoIosArrowDropdown
-            size={15}
-            className={
-              styles[`detail-arrow-icon${isRenderedBoxes ? "-up" : ""}`]
-            }
-          />
-          Yapı Detaylarını {isRenderedBoxes ? "Kapat" : "Görüntüle"}{" "}
-        </span>
-        {isRenderedBoxes && renderBoxes()}
+        {projectBoxValueAndKey.some((item) => item.value) &&
+          renderBoxAccordion()}
       </div>
     );
   };

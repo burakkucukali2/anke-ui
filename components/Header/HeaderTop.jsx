@@ -3,43 +3,13 @@ import Image from "next/image";
 import styles from "./index.module.css";
 import { AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const MY_EMAIL_ADDRESS = "info@ankeyapi.com";
 const MY_PHONE_NUMBER = "+90 212 543 57 53";
 
 function HeaderTop() {
-  const { t, i18n } = useTranslation("common");
-  const router = useRouter();
-  const { pathname, asPath, query } = router;
-
-  const changeLanguage = (lng) => () => {
-    router.push({ pathname, query }, asPath, { locale: lng });
-  };
-
-  const renderLangSelection = () => {
-    return (
-      <div className={styles["lang-selection"]}>
-        <span
-          className={`${
-            i18n.language === "tr" ? styles["lang-selection-active"] : ""
-          }`}
-          onClick={changeLanguage("tr")}
-        >
-          TR
-        </span>
-        <span
-          className={`${
-            i18n.language === "en" ? styles["lang-selection-active"] : ""
-          }`}
-          onClick={changeLanguage("en")}
-        >
-          EN
-        </span>
-      </div>
-    );
-  };
+  const { t } = useTranslation("common");
 
   return (
     <div className="layout">
@@ -53,9 +23,6 @@ function HeaderTop() {
             className={styles["header-logo"]}
           />
         </Link>
-        <div className={styles["mobile-lang-selection"]}>
-          {renderLangSelection()}
-        </div>
         <div className={styles["contact-info-wrapper"]}>
           <div className={styles["contact-info"]}>
             <AiOutlineMail size={24} className={styles["contact-icon"]} />
@@ -75,9 +42,6 @@ function HeaderTop() {
               </div>
               <div className={styles["contact-value"]}>{MY_PHONE_NUMBER}</div>
             </div>
-          </div>
-          <div className={styles["desktop-lang-selection"]}>
-            {renderLangSelection()}
           </div>
         </div>
       </div>

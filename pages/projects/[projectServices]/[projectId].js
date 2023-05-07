@@ -8,15 +8,17 @@ export default function ProjectDetail({ projectData }) {
   const { t } = useTranslation("common");
 
   return (
-    <div className="layout">
+    <>
       <DynamicHead
         title={`${projectData?.projectDetails.data.name} | ${t(
           "common:general_title"
         )}`}
         description={projectData?.projectDetails.data.name}
       />
-      <ProjectDetailContent projectData={projectData.projectDetails.data} />
-    </div>
+      <div className="layout">
+        <ProjectDetailContent projectData={projectData.projectDetails.data} />
+      </div>
+    </>
   );
 }
 

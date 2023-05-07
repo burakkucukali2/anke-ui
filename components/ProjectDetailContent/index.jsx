@@ -1,11 +1,9 @@
 import React from "react";
-import { Spinner } from "@/components";
+import { DefaultProjectImageWithLogo, Spinner } from "@/components";
 import Image from "next/image";
 import { convertISODateToReadableDate } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
 import styles from "./index.module.css";
-
-const DEFAULT_PROJECT_IMAGE = "/default-anke-large.webp";
 
 function ProjectDetailContent({ projectData, isLoading }) {
   const { t } = useTranslation("common");
@@ -39,19 +37,24 @@ function ProjectDetailContent({ projectData, isLoading }) {
 
   const renderProjectInfos = () => {
     return (
-      <div className={styles["info"]}>
-        {projectInfoValueAndKey.map((item) => (
-          <div key={item.key}>
-            {item.value && (
-              <div key={item.key} className={styles["info-item"]}>
-                <span className={styles["info-item-key"]}>{t(item.key)}:</span>
-                <span className={styles["info-item-value"]}>
-                  {item.value} {item.key === "moldArea" ? "㎡" : ""}
-                </span>
-              </div>
-            )}
-          </div>
-        ))}
+      <div className={styles["info-section"]}>
+        <div className={styles["title"]}>{projectData?.name}</div>
+        <div className={styles["info"]}>
+          {projectInfoValueAndKey.map((item) => (
+            <div key={item.key}>
+              {item.value && (
+                <div key={item.key} className={styles["info-item"]}>
+                  <span className={styles["info-item-key"]}>
+                    {t(item.key)}:
+                  </span>
+                  <span className={styles["info-item-value"]}>
+                    {item.value} {item.key === "moldArea" ? "㎡" : ""}
+                  </span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
@@ -64,17 +67,18 @@ function ProjectDetailContent({ projectData, isLoading }) {
         </div>
       ) : (
         <div className={styles["wrapper"]}>
-          <Image
-            src={projectData?.largeImgSrc ?? DEFAULT_PROJECT_IMAGE}
-            alt={projectData?.name}
-            width={710}
-            height={400}
-            className={styles["image"]}
-          />
-          <div className={styles["info-section"]}>
-            <div className={styles["title"]}>{projectData?.name}</div>
-            {renderProjectInfos()}
-          </div>
+          {projectData?.largeImgSrc ? (
+            <Image
+              src={projectData?.largeImgSrc}
+              alt={projectData?.name}
+              width={710}
+              height={400}
+              className={styles["image"]}
+            />
+          ) : (
+            <DefaultProjectImageWithLogo isLarge={true} />
+          )}
+          {renderProjectInfos()}
         </div>
       )}
     </>

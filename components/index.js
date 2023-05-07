@@ -10,6 +10,7 @@ import ProjectDetailContent from "./ProjectDetailContent";
 import NoData from "./NoData";
 import CompanySection from "./CompanySection";
 import ProjectItem from "./ProjectsContent/ProjectItem";
+import DefaultProjectImageWithLogo from "./DefaultProjectImageWithLogo";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   NoData,
   CompanySection,
   ProjectItem,
+  DefaultProjectImageWithLogo,
 };

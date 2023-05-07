@@ -3,9 +3,8 @@ import Link from "next/link";
 import { generateLowercaseAndKebabCasePath } from "@/utils/helper";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
+import { DefaultProjectImageWithLogo } from "@/components";
 import styles from "./index.module.css";
-
-const DEFAULT_PROJECT_IMAGE = "/default-anke.webp";
 
 function ProjectItem({ projects }) {
   const { t } = useTranslation("common");
@@ -20,19 +19,22 @@ function ProjectItem({ projects }) {
               item._id
             }`}
           >
-            <Image
-              src={item.thumbnailImgSrc || DEFAULT_PROJECT_IMAGE}
-              alt={item.name}
-              width={350}
-              height={450}
-              className={styles["image"]}
-            />
+            {item.thumbnailImgSrc ? (
+              <Image
+                src={item.thumbnailImgSrc}
+                alt={item.name}
+                width={350}
+                height={450}
+                className={styles["image"]}
+              />
+            ) : (
+              <DefaultProjectImageWithLogo />
+            )}
+
             <div className={styles["tags-wrapper"]}>
-              {item.categories.map((category, index) => (
-                <div key={index} className={styles["service-type-tag"]}>
-                  {t(`common:${category.name}`)}
-                </div>
-              ))}
+              <div className={styles["service-type-tag"]}>
+                {t(`common:${item.categories[0].name}`)}
+              </div>
             </div>
             <div className={styles["project-label"]}>{item.name}</div>
             <div className={styles["project-description"]}>

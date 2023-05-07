@@ -20,7 +20,7 @@ function Header() {
     },
     {
       title: t("common:projects"),
-      link: "/projects",
+      link: "/projeler",
     },
   ];
 

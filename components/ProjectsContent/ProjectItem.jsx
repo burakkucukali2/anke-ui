@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { generateLowercaseAndKebabCasePath } from "@/utils/helper";
+import { convertToKebabCaseTextWithoutSpecialChars } from "@/utils/helper";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { DefaultProjectImageWithLogo } from "@/components";
@@ -15,9 +15,9 @@ function ProjectItem({ projects }) {
         <div key={item.id} className={styles["col"]}>
           <Link
             className={styles["anchor-class"]}
-            href={`/projects/${generateLowercaseAndKebabCasePath(item.name)}/${
-              item._id
-            }`}
+            href={`/projeler/${convertToKebabCaseTextWithoutSpecialChars(
+              item.name
+            )}/${item._id}`}
           >
             {item.thumbnailImgSrc ? (
               <Image

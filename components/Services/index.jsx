@@ -46,7 +46,7 @@ function Services({ serviceData }) {
                 </div>
                 <div className={styles["slide-content-button"]}>
                   <Link
-                    href={"/projects"}
+                    href={"/projeler"}
                     className={styles["slide-content-link"]}
                   >
                     {t("common:view_projects")}

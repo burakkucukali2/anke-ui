@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DefaultProjectImageWithLogo, Spinner } from "@/components";
+import { DefaultProjectImageWithLogo, ServiceTag, Spinner } from "@/components";
 import Image from "next/image";
 import { convertISODateToReadableDate } from "@/utils/helper";
 import { useTranslation } from "next-i18next";
@@ -114,6 +114,10 @@ function ProjectDetailContent({ projectData, isLoading }) {
             </div>
           ))}
         </div>
+        <ServiceTag
+          wrapperClassName={styles["service-tag"]}
+          serviceType={t(`common:${projectData?.categories[0].name}`)}
+        />
         {projectBoxValueAndKey.some((item) => item.value) &&
           renderBoxAccordion()}
       </div>

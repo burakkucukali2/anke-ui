@@ -12,6 +12,7 @@ import CompanySection from "./CompanySection";
 import ProjectItem from "./ProjectsContent/ProjectItem";
 import DefaultProjectImageWithLogo from "./DefaultProjectImageWithLogo";
 import Map from "./Map";
+import ServiceTag from "./Services/ServiceTag";
 
 export {
   Header,
@@ -28,4 +29,5 @@ export {
   ProjectItem,
   DefaultProjectImageWithLogo,
   Map,
+  ServiceTag,
 };

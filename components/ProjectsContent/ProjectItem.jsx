@@ -3,7 +3,7 @@ import Link from "next/link";
 import { convertToKebabCaseTextWithoutSpecialChars } from "@/utils/helper";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
-import { DefaultProjectImageWithLogo } from "@/components";
+import { DefaultProjectImageWithLogo, ServiceTag } from "@/components";
 import styles from "./index.module.css";
 
 function ProjectItem({ projects }) {
@@ -32,9 +32,9 @@ function ProjectItem({ projects }) {
             )}
 
             <div className={styles["tags-wrapper"]}>
-              <div className={styles["service-type-tag"]}>
-                {t(`common:${item.categories[0].name}`)}
-              </div>
+              <ServiceTag
+                serviceType={t(`common:${item.categories[0].name}`)}
+              />
             </div>
             <div className={styles["project-label"]}>{item.name}</div>
             <div className={styles["project-description"]}>

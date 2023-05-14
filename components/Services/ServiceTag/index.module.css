@@ -1,0 +1,10 @@
+.service-type-tag {
+    display: inline-block;
+    width: auto;
+    font-size: 0.7rem;
+    background-color: var(--dark-blue);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 7px;
+}

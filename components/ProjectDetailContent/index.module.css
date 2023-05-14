@@ -123,6 +123,10 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.service-tag {
+    margin-top: 20px;
+    background-color: #8a7537;
+}
 
 @media (max-width: 768px) {
     .wrapper {

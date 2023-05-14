@@ -11,6 +11,7 @@ import NoData from "./NoData";
 import CompanySection from "./CompanySection";
 import ProjectItem from "./ProjectsContent/ProjectItem";
 import DefaultProjectImageWithLogo from "./DefaultProjectImageWithLogo";
+import Map from "./Map";
 
 export {
   Header,
@@ -26,4 +27,5 @@ export {
   CompanySection,
   ProjectItem,
   DefaultProjectImageWithLogo,
+  Map,
 };

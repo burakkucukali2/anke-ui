@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
-import { CompanySection } from "@/components";
+import { CompanySection, Map } from "@/components";
 import styles from "./index.module.css";
 
 function Footer() {
@@ -30,12 +30,16 @@ function Footer() {
   ];
 
   const renderContactInfo = () => {
-    return contactInfo.map((item, index) => (
+    return (
+    <div className={styles["footer-contact"]}>
+      {contactInfo.map((item, index) => (
       <div key={index} className={styles["footer-contact-info"]}>
         <span className={styles["footer-contact-label"]}>{item.title}: </span>
         <span>{item.value}</span>
       </div>
-    ));
+      ))}
+    </div>
+    )
   };
 
   const renderSocialMedia = () => {
@@ -59,9 +63,12 @@ function Footer() {
   return (
     <footer className={styles["footer"]}>
       <div className={styles["footer-title"]}>{t("common:head_office")}</div>
-      <div>
-        {renderContactInfo()}
-        {renderSocialMedia()}
+      <div className={styles['footer-body']}>
+        <div>
+          {renderContactInfo()}
+          {renderSocialMedia()}
+        </div>
+        <Map />
       </div>
       <CompanySection />
     </footer>

@@ -125,7 +125,7 @@
 
 .service-tag {
     margin-top: 20px;
-    background-color: #8a7537;
+    background-color: #8a7537 !important;
 }
 
 @media (max-width: 768px) {

@@ -1,1 +1,13 @@
+.map-container {
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+}
 
+
+@media (max-width: 768px) {
+    .map-container {
+        width: 100%;
+        height: 300px;
+    }
+}

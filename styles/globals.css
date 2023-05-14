@@ -21,7 +21,6 @@ body {
   grid-column: 2;
 }
 
-
 .slide-down {
   animation: slide-down 0.5s ease-in-out;
 }

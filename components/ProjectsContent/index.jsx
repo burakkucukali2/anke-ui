@@ -75,8 +75,6 @@ function ProjectsContent({ projectsData, totalPages }) {
       : fetchProjectsByCategory(selectedCategoryId, page + 1);
   };
 
-  console.log("test");
-
   const handleServiceCategory = (e) => {
     resetParameters();
     const categoryId = e.target.value;

@@ -28,13 +28,13 @@ const CATEGORIES = [
   },
 ];
 
-function ProjectsContent() {
+function ProjectsContent({ projectsData, totalPages }) {
   const { t } = useTranslation("common");
 
-  const totalPageCount = useRef(INITIAL_TOTAL_PAGE_COUNT);
+  const totalPageCount = useRef(totalPages);
   const buttonClickedRef = useRef(false);
 
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(projectsData);
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     ALL_PROJECTS_CATEGORY_ID
   );
@@ -66,18 +66,30 @@ function ProjectsContent() {
     totalPageCount.current = response.data.totalPages;
   };
 
-  const handlePageChange = () => {
+  const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
     setIsLoadingMore(true);
     buttonClickedRef.current = true;
+    selectedCategoryId === ALL_PROJECTS_CATEGORY_ID
+      ? fetchAllProjects(page + 1)
+      : fetchProjectsByCategory(selectedCategoryId, page + 1);
   };
 
   const handleServiceCategory = (e) => {
+    resetParameters();
     const categoryId = e.target.value;
-    setSelectedCategoryId(categoryId);
-    categoryId !== selectedCategoryId && resetParameters();
     setIsLoading(true);
+    setSelectedCategoryId(categoryId);
+    categoryId === ALL_PROJECTS_CATEGORY_ID
+      ? fetchAllProjects(INITIAL_PAGE)
+      : fetchProjectsByCategory(categoryId, INITIAL_PAGE);
   };
+
+  useEffect(() => {
+    if (projects.length > 0) {
+      setIsLoading(false);
+    }
+  }, [projectsData]);
 
   const renderCategorySelectBox = () => {
     return (
@@ -110,7 +122,7 @@ function ProjectsContent() {
       <>
         {totalPageCount.current !== page && projects.length > 0 && (
           <button
-            onClick={handlePageChange}
+            onClick={handleLoadMore}
             className={styles["load-more-button"]}
           >
             {isLoadingMore ? (
@@ -127,12 +139,6 @@ function ProjectsContent() {
       </>
     );
   };
-
-  useEffect(() => {
-    selectedCategoryId === ALL_PROJECTS_CATEGORY_ID
-      ? fetchAllProjects(page)
-      : fetchProjectsByCategory(selectedCategoryId, page);
-  }, [selectedCategoryId, page]);
 
   return (
     <div className={styles["wrapper"]}>

@@ -8,9 +8,11 @@ const containerStyle = {
   borderRadius: "10px",
 };
 
-const DEFAULT_CENTER = { lat: 40.9918996, lng: 28.8342029 };
-
+const DEFAULT_CENTER = { lat: 40.99205, lng: 28.8342 };
+const MAP_URL =
+  "https://www.google.com/maps/place/Anke+Yap%C4%B1+ve+M%C3%BChendislik+San.+Tic.+Ltd.+%C5%9Eti./@40.9918676,28.8293359,17z/data=!3m1!4b1!4m6!3m5!1s0x14caa17ead84e911:0x67856cc7ccd6cbc3!8m2!3d40.9918677!4d28.8342068!16s%2Fg%2F11g_t267m?entry=ttu";
 const GOOGLE_MAPS_API_KEY = "AIzaSyD47xPQo1fX4bD5W1MQybxplxj4rhhiq74";
+
 function Map() {
   const mapRef = useRef(null);
 
@@ -32,10 +34,7 @@ function Map() {
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
   const handleClickOpenNewTabCenter = () => {
-    window.open(
-      `https://www.google.com/maps/search/?api=1&query=${center.lat},${center.lng}`,
-      "_blank"
-    );
+    window.open(MAP_URL, "_blank");
   };
 
   return isLoaded ? (

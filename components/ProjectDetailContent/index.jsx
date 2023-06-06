@@ -9,6 +9,8 @@ import styles from "./index.module.css";
 function ProjectDetailContent({ projectData, isLoading }) {
   const { t } = useTranslation("common");
 
+  console.log("test");
+
   const projectInfoValueAndKey = [
     {
       key: "projectOwner",

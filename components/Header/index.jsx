@@ -16,7 +16,7 @@ function Header() {
     },
     {
       title: t("common:about_nav"),
-      link: "/about",
+      link: "/hakkimizda",
     },
     {
       title: t("common:projects"),

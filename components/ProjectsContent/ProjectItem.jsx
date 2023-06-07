@@ -15,7 +15,7 @@ function ProjectItem({ projects }) {
         <div key={item.id} className={styles["col"]}>
           <Link
             className={styles["anchor-class"]}
-            href={`/projeler/${convertToKebabCaseTextWithoutSpecialChars(
+            href={`/projelerimiz/${convertToKebabCaseTextWithoutSpecialChars(
               item.name
             )}/${item._id}`}
           >

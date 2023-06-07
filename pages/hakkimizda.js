@@ -3,7 +3,7 @@ import DynamicHead from "@/components/DynamicHead";
 import { useTranslation } from "next-i18next";
 import { AboutContent } from "@/components";
 
-export default function About() {
+export default function Hakkimizda() {
   const { t } = useTranslation("common");
 
   return (

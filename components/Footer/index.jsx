@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
-import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
+import { AiFillInstagram, AiFillLinkedin, AiOutlineCopy } from "react-icons/ai";
 import { CompanySection, Map } from "@/components";
 import styles from "./index.module.css";
 
@@ -14,7 +14,7 @@ function Footer() {
     },
     {
       title: t("common:phone"),
-      value: "+902125435753",
+      value: "+90 212 543 57 53",
     },
   ];
 
@@ -29,17 +29,46 @@ function Footer() {
     },
   ];
 
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyClick = (value) => {
+    const noSpacesText = value.replace(/\s/g, "");
+    navigator.clipboard.writeText(noSpacesText);
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1500);
+  };
+
   const renderContactInfo = () => {
     return (
-    <div className={styles["footer-contact"]}>
-      {contactInfo.map((item, index) => (
-      <div key={index} className={styles["footer-contact-info"]}>
-        <span className={styles["footer-contact-label"]}>{item.title}: </span>
-        <span>{item.value}</span>
+      <div className={styles["footer-contact"]}>
+        {contactInfo.map((item, index) => (
+          <div key={index} className={styles["footer-contact-info"]}>
+            <span className={styles["footer-contact-label"]}>
+              {item.title}:
+            </span>
+            <div className={styles["info-group"]}>
+              <div>{item.value}</div>
+              <div>
+                {item.title !== t("common:address") && !isCopied && (
+                  <AiOutlineCopy
+                    size={20}
+                    className={styles["copy-icon"]}
+                    onClick={() => handleCopyClick(item.value)}
+                  />
+                )}
+                {isCopied && item.title !== t("common:address") && (
+                  <span className={styles["clipboard-copy-success"]}>
+                    {t("common:copied")}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-      ))}
-    </div>
-    )
+    );
   };
 
   const renderSocialMedia = () => {
@@ -63,7 +92,7 @@ function Footer() {
   return (
     <footer className={styles["footer"]}>
       <div className={styles["footer-title"]}>{t("common:head_office")}</div>
-      <div className={styles['footer-body']}>
+      <div className={styles["footer-body"]}>
         <div>
           {renderContactInfo()}
           {renderSocialMedia()}

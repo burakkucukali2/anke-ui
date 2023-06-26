@@ -39,6 +39,7 @@
 }
 
 .footer-contact-info {
+    display: flex;
     font-family: 'Roboto Condensed', sans-serif;
     font-style: normal;
     font-size: 20px;
@@ -106,5 +107,25 @@
     .footer-social-item {
         margin: 0 5px;
     }
+}
 
+.copy-icon {
+    margin-left: 5px
+}
+
+.clipboard-copy-success {
+    margin: 0 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 14px;
+    padding: 2px 5px 2px 5px;
+    border-radius: 15px;
+    background-color: #a52aa9;
+    color: white;
+}
+
+.info-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
 }

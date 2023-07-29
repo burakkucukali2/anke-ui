@@ -3,9 +3,11 @@ import { useTranslation } from "next-i18next";
 import { AiFillInstagram, AiFillLinkedin, AiOutlineCopy } from "react-icons/ai";
 import { CompanySection, Map } from "@/components";
 import styles from "./index.module.css";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 function Footer() {
   const { t } = useTranslation("common");
+  const isMobile = useMediaQuery(768);
 
   const contactInfo = [
     {
@@ -28,6 +30,8 @@ function Footer() {
       link: process.env.NEXT_PUBLIC_OWN_LINKEDIN_URL,
     },
   ];
+
+  console.log("isMobile", isMobile);
 
   const [isCopied, setIsCopied] = useState(false);
 
@@ -53,7 +57,7 @@ function Footer() {
               <div>
                 {item.title !== t("common:address") && !isCopied && (
                   <AiOutlineCopy
-                    size={20}
+                    size={isMobile ? 16 : 20}
                     className={styles["copy-icon"]}
                     onClick={() => handleCopyClick(item.value)}
                   />

@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./index.module.css";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 function DefaultProjectImageWithLogo({ isLarge = false }) {
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isMobile = useMediaQuery(768);
 
   return (
     <div className={styles[`wrapper${isLarge ? "-large" : ""}`]}>

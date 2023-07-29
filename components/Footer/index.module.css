@@ -110,7 +110,11 @@
 }
 
 .copy-icon {
-    margin-left: 5px
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .clipboard-copy-success {
@@ -128,4 +132,14 @@
     justify-content: center;
     align-items: center;
     margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .info-group {
+        margin-left: 3px;
+    }
+
+    .footer-contact {
+        margin-right: 0;
+    }
 }
